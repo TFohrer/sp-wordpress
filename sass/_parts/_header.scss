@@ -1,0 +1,217 @@
+/*_header.scss */
+
+// navigation styling
+
+header{
+  @include bp-dektop{
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    height: $reduced_nav_height;
+    @include transition(all $nav_animation_duration);
+    @include opacity(0.98);
+    box-sizing: border-box;
+
+    .x-navbar{
+      height: $reduced_nav_height;
+      border-bottom: 1px solid $border_grey;
+      @include transition(all $nav_animation_duration);
+    }
+
+    .x-brand{
+      @include transition(all $nav_animation_duration);
+      margin-top: 3px;
+
+      &.img{
+      position: relative;
+
+        img{
+          @include transition(all $nav_animation_duration)
+        }
+
+        /*&:before{
+          content: ' ';
+          display: block;
+          position: absolute;
+          left: 0;
+          width: 40px;
+          height: 58px;
+          //background: url("assets/images/logo_black.png");
+          background-size: contain;
+          @include opacity(0)
+        }*/
+      }
+    }
+
+    .x-nav-wrap.desktop{
+      .x-nav > li > a{
+        @include transition(all $nav_animation_duration);
+        height: $reduced_nav_height;
+        padding-top: 30px;
+
+        &:hover{
+          cursor: pointer;
+        }
+      }
+
+      .x-social-global{
+        @include transition(all $nav_animation_duration);
+        margin-top: 24px;
+      }
+    }
+  }
+
+  .x-navbar{
+    .x-brand,
+    .x-nav > li > a{
+      @include transition(all $nav_animation_duration);
+    }
+
+    .x-brand{
+      //slogan
+      span{
+        display: inline-block;
+        margin-left: 8px;
+        vertical-align: sub;
+        @include opacity(0);
+        @include transition(all, $nav_animation_duration);
+      }
+    }
+
+    @include bp-dektop{
+
+      // reduce navigation height on scroll
+      /*&.x-navbar-fixed-top{
+        @include transition(all $nav_animation_duration);
+        @include opacity(0.98);
+        border-bottom: 1px solid $border_grey;
+        height: $reduced_nav_height;
+
+        .x-brand{
+          @include transition(all $nav_animation_duration);
+          margin-top: 3px;
+
+          span{
+            @include transition(all, $nav_animation_duration);
+            @include opacity(1);
+          }
+        }
+
+        .x-nav-wrap.desktop{
+          .x-nav > li > a{
+            @include transition(all $nav_animation_duration);
+            height: $reduced_nav_height;
+            padding-top: 30px;
+          }
+
+          .x-social-global{
+            @include transition(all $nav_animation_duration);
+            margin-top: 24px;
+          }
+        }
+      }*/
+    }
+
+    .x-nav-wrap{
+
+      //global social icons in navigation styling
+      .x-social-global{
+        a{
+          color: $color_logo_dark;
+          margin: 0 2px;
+          font-size: 17px;
+          padding: 5px;
+          border-radius: 0;
+
+          &:hover{
+            color: white;
+          }
+
+          .x-icon-facebook-square:before {
+            content: "\f09a";
+          }
+
+          .x-icon-twitter-square:before{
+            content: "\f099";
+          }
+
+          .x-icon-google-plus-square:before{
+            content: "\f0d5";
+          }
+        }
+      }
+
+      &.desktop{
+
+        //desktop social icons in navigation styling
+        .x-social-global{
+          @include transition(all $nav_animation_duration);
+          float: right;
+          border-left: 1px solid #cccccc;
+          padding-left: 20px;
+          margin: 28px 0 0 20px;
+        }
+      }
+
+      &.mobile{
+
+        .x-nav{
+          margin-bottom: 15px;
+        }
+        //mobile social icons in navigation styling
+        .x-social-global{
+          margin-bottom: 10px;
+          text-align: center;
+
+          a{
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+  }
+
+
+  //top of page
+  @include bp-dektop{
+    &.headroom--top{
+
+      .x-navbar{
+        background: rgba(255,255,255,0) !important;
+        border-bottom: none;
+      }
+
+      #menu-main-menu{
+        @include opacity(0);
+      }
+
+      .x-social-global{
+        @include opacity(0)
+      }
+
+      .x-brand.img{
+        img{
+          @include opacity(0);
+        }
+        &:before{
+          @include opacity(1);
+          @include transition(all $nav_animation_duration);
+        }
+        span{
+          //@include opacity(0);
+        }
+      }
+    }
+
+    &.headroom--unpinned{
+      .x-brand.img{
+        &:before{
+          @include opacity(0);
+          @include transition(all $nav_animation_duration);
+        }
+      }
+    }
+  }
+
+}
+

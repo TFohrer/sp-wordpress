@@ -1,0 +1,19 @@
+/** styles for same height elements that are in one row with the help of flexbox **/
+
+.same-height-container{
+  display: table;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+
+  .x-column{
+    display: table-cell;
+    display:flex;
+    flex-direction:column;
+
+    .x-text{
+      flex: 1;
+    }
+  }
+}

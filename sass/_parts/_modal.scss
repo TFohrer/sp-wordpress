@@ -1,0 +1,37 @@
+/* _modal.scss */
+
+// show modal on cornerstone edit window
+.cs-editor-active{
+  .remodal{
+    display: block !important;
+  }
+}
+
+
+.remodal{
+  text-align: initial;
+
+  h1,h2,h3,h4{
+  margin-top: 0;
+}
+
+  ul{
+    li{
+      p{
+        margin-bottom: 0;
+      }
+    }
+  }
+  .remodal-close{
+    right: 0;
+    left: auto;
+  }
+}
+
+@media only screen and (min-width: 641px) {
+  .remodal {
+    max-width: 80%;
+    text-align: initial;
+  }
+}
+
