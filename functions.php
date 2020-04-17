@@ -24,6 +24,9 @@ add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
 
 static $meta_key = 'wpuf_form';
 
+$manifestStr = file_get_contents(dirname(__FILE__)."/build/manifest.json");
+$manifest = json_decode($manifestStr, true);
+
 
 /** add post-type "Seminar Bewertungen" **/
 add_action( 'init', 'create_post_type' );
@@ -93,21 +96,17 @@ function custom_review_form_render( $form_id, $post_id, $form_settings ) {
 }
 
 /** additional styles */
-function load_style_files()
+function load_style_files($manifest)
 {
-
-    // Register the style like this for a theme:
-    //wp_register_style( 'materialize-css', get_stylesheet_directory_uri() . '/nodes_modules/materialize-css/dist/css/materialize.min.css');
-
-    // For either a plugin or a theme, you can then enqueue the style:
-    //wp_enqueue_style( 'custom-style' );
+    $cssFileURI = get_stylesheet_directory_uri() . '/build/' . $manifest['main.css'];
+    wp_enqueue_style( 'main_css', $cssFileURI );
 
     //remove plugin styles
     wp_dequeue_style('wpuf-css');
 
 }
 
-add_action( 'wp_enqueue_scripts', 'load_style_files' );
+add_action( 'wp_enqueue_scripts', function() use ($manifest) {load_style_files($manifest);} );
 
 /*add_action('wp_head','additional_polymer_imports');
 function additional_polymer_imports() {
@@ -116,8 +115,8 @@ function additional_polymer_imports() {
 
 /** additional js **/
 
-add_action('wp_enqueue_scripts', 'load_javascript_files',99);
-function load_javascript_files() {
+
+function load_javascript_files($manifest) {
 
     wp_register_script('buttons', get_stylesheet_directory_uri() . '/js/buttons.js', array('jquery'), true );
     wp_enqueue_script('buttons');
@@ -128,14 +127,17 @@ function load_javascript_files() {
     wp_register_script('forms', get_stylesheet_directory_uri() . '/js/forms.js', array('jquery'), true );
     wp_enqueue_script('forms');
 
-    wp_register_script('main', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), true );
-    wp_enqueue_script('main');
+    $mainJsFileName = $manifest['main.js'];
 
-    wp_register_script('remodal', get_stylesheet_directory_uri() . '/node_modules/remodal/dist/remodal.js', array('jquery'), true );
-    wp_enqueue_script('remodal');
+    wp_register_script('main_js', get_stylesheet_directory_uri() . '/build/'. $mainJsFileName, array('jquery'), true );
+    wp_enqueue_script('main_js');
+
+    /*wp_register_script('remodal', get_stylesheet_directory_uri() . '/node_modules/remodal/dist/remodal.js', array('jquery'), true );
+    wp_enqueue_script('remodal');*/
 
     wp_register_script('headroom', get_stylesheet_directory_uri() . '/node_modules/headroom.js/dist/headroom.js', array('jquery'), true );
     wp_enqueue_script('headroom');
 }
 
+add_action('wp_enqueue_scripts', function() use ($manifest) { load_javascript_files($manifest); },99);
 
