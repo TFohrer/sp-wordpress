@@ -4,13 +4,11 @@ form{
   background: $border_grey;
   margin-bottom: 0;
   overflow: hidden;
-  //display: none;
-  //max-height: 0;
 
   &.show-form{
     //display: block;
     max-height: 1000px;
-    @include transition(1.25s);
+    transition: max-height 1.25s;
   }
 
   &.wpuf-form-add{
@@ -62,10 +60,10 @@ form{
 
         .wpuf-fields{
           background-color: white;
-          @include opacity(0.8);
+          opacity: 0.8;
 
           &.focus{
-            @include opacity(1);
+            opacity: 1;
 
           }
 
@@ -93,14 +91,7 @@ form{
             @include placeholder {
               font: inherit;
               display: none;
-              @include transition(transform 0.3s ease-in-out,font-size 0.3s ease-in-out,visibility 0.3s ease-in-out);
-            }
-
-            &:focus{
-              @include placeholder{
-                //color: $color_blue_highlight;
-
-              }
+              transition: transform 0.3s ease-in-out,font-size 0.3s ease-in-out,visibility 0.3s ease-in-out;
             }
 
             &:focus,
@@ -146,7 +137,7 @@ form{
       .button.file-selector{
         background: $color_logo_dark;
         box-shadow: none;
-        @include opacity(1);
+        opacity: 1;
         padding: 0.563em 1.125em 0.813em;
         font-size: 16px;
         border-radius: 0;

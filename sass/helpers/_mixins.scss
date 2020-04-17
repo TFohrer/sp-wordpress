@@ -1,13 +1,5 @@
 /* _mixin.scss */
 
-@mixin transition($args...) {
-  -webkit-transition: $args;
-     -moz-transition: $args;
-      -ms-transition: $args;
-       -o-transition: $args;
-          transition: $args;
-}
-
 @mixin transition-property($property...) {
   -moz-transition-property:    $property;
   -o-transition-property:      $property;
@@ -91,13 +83,6 @@
   @include optional-at-root(':-ms-input-placeholder') {
     @content;
   }
-}
-
-// Cross browser opacity
-@mixin opacity($opacity) {
-  opacity: $opacity;
-  $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie); //IE8
 }
 
 // breakpoints

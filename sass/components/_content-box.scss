@@ -46,7 +46,7 @@
     i{
       color: white;
     }
-    
+
     &.close-button{
         background: white;
         position: absolute;
@@ -89,29 +89,19 @@
     right: 20px;
     bottom: 20px;
 
-
-
     &.clicked{
-      -webkit-transform: rotate(90deg) translateY(15%);
-      -ms-transform: rotate(90deg) translateY(15%);
       transform: rotate(90deg) translateY(15%);
       right: 0;
       bottom: 0;
-      -webkit-transition: .3s all ease .6s;
       transition: .3s all ease .6s;
-
 
       .main-button {
         opacity: 0;
-        -webkit-transition: .3s all ease .3s;
         transition: .3s all ease .3s;
       }
 
       .layer {
-        -webkit-transform: scale(100);
-            -ms-transform: scale(100);
-                transform: scale(100);
-        -webkit-transition: 2s all ease .9s;
+        transform: scale(100);
         transition: 2s all ease .9s;
       }
 
@@ -120,49 +110,8 @@
 
   .main-button {
     background: #4e5b6c;
-    -webkit-align-self: flex-end;
-    -ms-flex-item-align: end;
     align-self: flex-end;
   }
-
-  /*.ripple {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    border-radius: 50%;
-    z-index: -9;
-    background: transparent;
-    border: 1px solid #ff2670;
-    -webkit-transform: scale(.5);
-    -ms-transform: scale(.5);
-    transform: scale(.5);
-    -webkit-transition: .3s all ease;
-    transition: .3s all ease;
-    opacity: 1;
-  }*/
-
-  /*.rippling {
-    -webkit-animation: .3s rippling 1;
-    animation: .3s rippling 1;
-    -moz-animation: .3s rippling 1;
-  }
-
-  @include keyframes(rippling){
-    25% {
-      -webkit-transform: scale(1.5);
-      transform: scale(1.5);
-      opacity: 1;
-    }
-
-    100% {
-      -webkit-transform: scale(2);
-      transform: scale(2);
-      opacity: 0;
-    }
-  }*/
-
 
   .layer {
     position: absolute;
@@ -201,7 +150,7 @@
       text-align: center;
 
       *{
-        @include opacity(0);
+        opacity: 0;
         top: -7.5px;
       }
 
@@ -236,9 +185,8 @@
         *{
           opacity: 1;
           top: 0;
-          @include transition(.25s top ease .5s, .25s opacity ease .5s);
+          transition: .25s top ease .5s;
         }
-
       }
     }
   }
