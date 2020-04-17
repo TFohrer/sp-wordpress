@@ -129,14 +129,14 @@ function load_javascript_files($manifest) {
 
     $mainJsFileName = $manifest['main.js'];
 
-    wp_register_script('main_js', get_stylesheet_directory_uri() . '/build/'. $mainJsFileName, array('jquery'), true );
+    wp_register_script('main_js', get_stylesheet_directory_uri() . '/build/'. $mainJsFileName, array('jquery'), true, true );
     wp_enqueue_script('main_js');
 
     /*wp_register_script('remodal', get_stylesheet_directory_uri() . '/node_modules/remodal/dist/remodal.js', array('jquery'), true );
     wp_enqueue_script('remodal');*/
 
-    wp_register_script('headroom', get_stylesheet_directory_uri() . '/node_modules/headroom.js/dist/headroom.js', array('jquery'), true );
-    wp_enqueue_script('headroom');
+    /*wp_register_script('headroom', get_stylesheet_directory_uri() . '/node_modules/headroom.js/dist/headroom.js', array('jquery'), true );
+    wp_enqueue_script('headroom');*/
 }
 
 add_action('wp_enqueue_scripts', function() use ($manifest) { load_javascript_files($manifest); },99);

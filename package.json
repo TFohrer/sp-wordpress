@@ -4,17 +4,20 @@
   "description": "",
   "main": "js/main.js",
   "dependencies": {
-    "headroom.js": "^0.9.3"
+    "headroom.js": "^0.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.2",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
     "sass-loader": "^8.0.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.42.1",
@@ -26,6 +29,10 @@
     "dist": "webpack --mode production",
     "watch": "webpack --watch --mode development"
   },
-  "author": "",
+  "browserslist": [
+    "last 2 versions",
+    "> 5%"
+  ],
+  "author": "TF",
   "license": "ISC"
 }

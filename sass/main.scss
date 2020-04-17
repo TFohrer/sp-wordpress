@@ -1,9 +1,9 @@
 
-// import helper
+/* import helper */
 @import "_helpers/variables";
 @import "_helpers/mixins";
 
-// import page part stylings
+/* import page part stylings */
 @import "_parts/header";
 @import "_parts/forms";
 @import "_parts/modal";
@@ -12,8 +12,8 @@
 @import "_parts/container";
 @import "_parts/typo";
 
-// import components
+/* import components */
 
-@import "_components/buttons";
-@import "_components/content-box";
-@import "_components/same-height";
+@import "components/buttons";
+@import "components/content-box";
+@import "components/same-height";

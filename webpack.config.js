@@ -14,7 +14,7 @@ module.exports = {
     entry: ['./js/main.js', './sass/main.scss'],
     output: {
         filename: './main.min.[hash].js',
-        path: path.resolve(__dirname) + '/build'
+        path: path.resolve(__dirname, 'build')
     },
     module: {
         rules: [
@@ -29,22 +29,21 @@ module.exports = {
                     }
                 }
             },
-            // compile all .scss files to plain old css
+            // compile all .scss files to plain old css + autoprefix
             {
                 test: /\.(sass|scss)$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader','sass-loader']
             }
         ]
     },
     plugins: [
+
         // extract css into dedicated file
         new MiniCssExtractPlugin({
             filename: './main.min.[hash].css'
         }),
-        new WebpackAssetsManifest(),
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: ['./build/*']
-        })
+        new CleanWebpackPlugin(),
+        new WebpackAssetsManifest()
     ],
     optimization: {
         minimizer: [
