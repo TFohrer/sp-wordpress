@@ -24,9 +24,9 @@ jobs:
     - name: Build 🔧
       run: yarn dist
     
-    - name: Sync
+    - name: Deploy/Sync 🚀
       env:
-        dest: '${{SSH_USER}}@${{SSH_SERVER}}:${{DEPLOY_DESTINATION}}'
+        dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:${{secrets.DEPLOY_DESTINATION}}'
       run: |
         echo "${{secrets.DEPLOY_KEY}}" > deploy_key
         chmod 600 ./deploy_key
