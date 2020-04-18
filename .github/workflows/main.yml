@@ -29,5 +29,5 @@ jobs:
         dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:${{secrets.DEPLOY_DESTINATION}}'
       run: |
         echo "${{secrets.DEPLOY_KEY}}" > deploy_key
-        echo "Deploying to ${{secrets.DEPLOY_DESTINATION}}"
+        echo "Deploying to ${{env.dest}}"
     
