@@ -74,7 +74,6 @@ function my_custom_elements() {
 /** additional shortcodes **/
 
 include_once "shortcodes/bp_button.php";
-include_once "shortcodes/bp_recent_posts.php";
 include_once "shortcodes/bp_content_box.php";
 
 
