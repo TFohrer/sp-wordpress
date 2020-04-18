@@ -29,16 +29,16 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
-    
+
     - name: Install dependencies
       run: yarn install
 
     - name: Build 🔧
       run: yarn dist
-    
+
     - name: Deploy/Sync 🚀
       env:
-        dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:/www/htdocs/w0145bd5/deploy_test'
+        dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:/www/htdocs/w0145bd5/alpha-you.com/prod/pfluegler/wp-content/themes/x-child'
       run: |
         echo "${{secrets.DEPLOY_KEY}}" > deploy_key
         chmod 600 ./deploy_key
@@ -48,4 +48,4 @@ jobs:
           --exclude /.github/ \
           --exclude /node_modules/ \
           ./ ${{env.dest}}
-    
+
