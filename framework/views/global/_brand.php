@@ -16,5 +16,5 @@ $site_logo        = '<img src="' . $logo . '" alt="' . $site_description . '">';
 <?php echo ( is_front_page() ) ? '<h1 class="visually-hidden">' . $site_name . '</h1>' : ''; ?>
 
 <a href="<?php echo home_url( '/' ); ?>" class="<?php x_brand_class(); ?>" title="<?php echo $site_description; ?>">
-  <?php echo ( $logo == '' ) ? $site_name : $site_logo . '<span>'.$site_description.'</span>'; ?>
+  <?php echo ( $logo == '' ) ? $site_name : $site_logo; ?>
 </a>

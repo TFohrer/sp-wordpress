@@ -66,40 +66,6 @@ header {
       }
     }
 
-    @include bp-dektop {
-
-      // reduce navigation height on scroll
-      /*&.x-navbar-fixed-top{
-        @include transition(all $nav_animation_duration);
-        @include opacity(0.98);
-        border-bottom: 1px solid $border_grey;
-        height: $reduced_nav_height;
-
-        .x-brand{
-          @include transition(all $nav_animation_duration);
-          margin-top: 3px;
-
-          span{
-            @include transition(all, $nav_animation_duration);
-            @include opacity(1);
-          }
-        }
-
-        .x-nav-wrap.desktop{
-          .x-nav > li > a{
-            @include transition(all $nav_animation_duration);
-            height: $reduced_nav_height;
-            padding-top: 30px;
-          }
-
-          .x-social-global{
-            @include transition(all $nav_animation_duration);
-            margin-top: 24px;
-          }
-        }
-      }*/
-    }
-
     .x-nav-wrap {
 
       //global social icons in navigation styling
