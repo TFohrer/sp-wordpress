@@ -51,26 +51,6 @@ function add_event_post_type( $types ) {
 add_filter( 'cs_recent_posts_post_types', 'add_event_post_type', 999 );
 
 
-/** custom cornerstone elements **/
-add_action( 'cornerstone_load_elements', 'my_custom_elements' );
-function my_custom_elements() {
-
-    /*require_once 'cornerstone_elements/bp_usp_form_element.php';
-    cornerstone_add_element('BP_USP');
-
-    require_once 'cornerstone_elements/bp_custom_recent_posts_element.php';
-    cornerstone_add_element('BP_RP');
-
-    require_once 'cornerstone_elements/bp_modal_element.php';
-    cornerstone_add_element('BP_Modal');
-
-    require_once 'cornerstone_elements/bp_custom_button.php';
-    cornerstone_add_element('BP_Button');
-
-    require_once 'cornerstone_elements/bp_content_box.php';
-    cornerstone_add_element('BP_Content_Box');*/
-}
-
 /** additional shortcodes **/
 
 include_once "shortcodes/bp_button.php";
@@ -87,11 +67,6 @@ function custom_review_form_render( $form_id, $post_id, $form_settings ) {
 
     $form_vars = get_post_meta( $form_id, 'wpuf_form' , true );
     $form_settings = get_post_meta( $form_id, 'wpuf_form_settings', true );
-
-    /*var_dump('<pre>');
-    var_dump($form_vars);
-    var_dump('</pre>');*/
-
 }
 
 /** additional styles */
@@ -107,35 +82,15 @@ function load_style_files($manifest)
 
 add_action( 'wp_enqueue_scripts', function() use ($manifest) {load_style_files($manifest);} );
 
-/*add_action('wp_head','additional_polymer_imports');
-function additional_polymer_imports() {
-    echo '<link rel="import" href="'.get_stylesheet_directory_uri().'/bower_components/paper-button/paper-button.html" />';
-}*/
-
 /** additional js **/
 
 
 function load_javascript_files($manifest) {
 
-    wp_register_script('buttons', get_stylesheet_directory_uri() . '/js/buttons.js', array('jquery'), true );
-    wp_enqueue_script('buttons');
-
-    wp_register_script('content-box', get_stylesheet_directory_uri() . '/js/content-box.js', array('jquery'), true );
-    wp_enqueue_script('content-box');
-
-    wp_register_script('forms', get_stylesheet_directory_uri() . '/js/forms.js', array('jquery'), true );
-    wp_enqueue_script('forms');
-
     $mainJsFileName = $manifest['main.js'];
 
     wp_register_script('main_js', get_stylesheet_directory_uri() . '/build/'. $mainJsFileName, array('jquery'), true, true );
     wp_enqueue_script('main_js');
-
-    /*wp_register_script('remodal', get_stylesheet_directory_uri() . '/node_modules/remodal/dist/remodal.js', array('jquery'), true );
-    wp_enqueue_script('remodal');*/
-
-    /*wp_register_script('headroom', get_stylesheet_directory_uri() . '/node_modules/headroom.js/dist/headroom.js', array('jquery'), true );
-    wp_enqueue_script('headroom');*/
 }
 
 add_action('wp_enqueue_scripts', function() use ($manifest) { load_javascript_files($manifest); },99);
