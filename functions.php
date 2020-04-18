@@ -106,3 +106,9 @@ function remove_block_css() {
     wp_dequeue_style( 'wc-block-style' ); // WooCommerce
     wp_dequeue_style( 'storefront-gutenberg-blocks' ); // Storefront theme
 }
+
+// Custom x-theme DE translations
+function load_child_language() {
+    load_child_theme_textdomain( '__x__', get_stylesheet_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'load_child_language' );
