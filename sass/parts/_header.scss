@@ -2,7 +2,7 @@
 
 // navigation styling
 
-header {
+.masthead {
   @include bp-dektop {
     position: fixed;
     z-index: 99;
