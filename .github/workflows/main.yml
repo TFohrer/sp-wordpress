@@ -26,8 +26,15 @@ jobs:
     
     - name: Deploy/Sync 🚀
       env:
-        dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:${{secrets.DEPLOY_DESTINATION}}'
+        dest: '${{secrets.SSH_USER}}@sebastian-pfluegler.com:/deploy_test'
       run: |
         echo "${{secrets.DEPLOY_KEY}}" > deploy_key
         echo "Deploying to ${{env.dest}}"
+        chmod 600 ./deploy_key
+        rsync -chav --delete \
+          -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
+          --exclude /.git/ \
+          --exclude /.github/ \
+          --exclude /node_modules/ \
+          ./ ${{env.dest}}
     
