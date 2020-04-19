@@ -1,13 +1,5 @@
 /* _mixin.scss */
 
-@mixin animation($str) {
-  -webkit-animation: #{$str};
-     -moz-animation: #{$str};
-      -ms-animation: #{$str};
-       -o-animation: #{$str};
-          animation: #{$str};
-}
-
 @function calculateRem($size) {
   $remSize: $size / 16px;
   @return $remSize * 1rem;
