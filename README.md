@@ -3,4 +3,32 @@
 
 ## Getting started 
 
-After copying the child theme into the default wordpress themes folder (`wp-content/themes`)
+Copy child theme into default wordpress themes folder (`wp-content/themes`)
+
+<br>
+
+Install dependencies
+  ```
+    yarn install 
+``` 
+<br>
+Build
+
+```
+    yarn build 
+    # or
+    yarn watch 
+``` 
+<br>
+Build for prod
+
+```
+    yarn dist
+```
+
+
+### Features
+
+- Babel transpiler 
+- PostCSS autoprefixer 
+- UglifyJS 
