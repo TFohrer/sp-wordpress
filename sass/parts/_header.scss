@@ -1,166 +1,97 @@
-/*_header.scss */
+/**
+  navigation styling
+**/
 
-// navigation styling
-
+// default top navigation styles (not scrolled)
 .masthead {
-  @include bp-dektop {
+  @include breakpoint-up(md) {
     position: fixed;
     z-index: 99;
     width: 100%;
-    height: $reduced_nav_height;
-    transition: all $nav_animation_duration;
-    opacity: 0.98;
-    box-sizing: border-box;
+  }
+}
 
-    .x-navbar {
-      height: $reduced_nav_height;
-      border-bottom: 1px solid $border_grey;
-      transition: all $nav_animation_duration;
-    }
+.masthead .x-navbar {
+  @include breakpoint-up(md) {
+    background: rgba(255, 255, 255, 0) !important; // important needed to overwrite the theme settings
+    transition: background-color $timing-top-navigation;
+    opacity: 0.99;
+  }
+}
 
-    .x-brand {
-      transition: all $nav_animation_duration;
-      margin-top: 3px;
+// desktop menu items
+.masthead .x-nav-wrap.desktop .menu-item a{
+  color: $color-top-menu-items !important;
+  transition: color $timing-top-navigation;
 
-      &.img {
-        position: relative;
+  &:hover span {
+    box-shadow: 0 2px 0 0 $color-top-menu-items;
+  }
+}
 
-        img {
-          transition: all $nav_animation_duration;
-        }
-      }
-    }
+// social icons
+.masthead .x-social-global {
+  margin: 25px 0;
+  text-align: center;
 
-    .x-nav-wrap.desktop {
-      .x-nav > li > a {
-        transition: all $nav_animation_duration;
-        height: $reduced_nav_height;
-        padding-top: 30px;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-
-      .x-social-global {
-        transition: all $nav_animation_duration;
-        margin-top: 24px;
-      }
-    }
+  @include breakpoint-up(md) {
+    float: right;
+    border-left: 1px solid #cccccc;
+    padding-left: 20px;
+    margin: 28px 0 0 20px;
   }
 
-  .x-navbar {
-    .x-brand,
-    .x-nav > li > a {
-      transition: all $nav_animation_duration;
-    }
+  a {
+    color: $color-primary;
+    margin: 0 15px;
+    font-size: 25px;
+    border-radius: 0;
 
-    .x-brand {
-      //slogan
-      span {
-        display: inline-block;
-        margin-left: 8px;
-        vertical-align: sub;
-        opacity: 0;
-        transition: all $nav_animation_duration;
-      }
-    }
+    @include breakpoint-up(md) {
+      background: none;
+      color: white;
+      font-size: 20px;
+      margin: 0 5px;
+      padding: 5px;
+      transition: color $timing-top-navigation;
 
-    .x-nav-wrap {
-
-      //global social icons in navigation styling
-      .x-social-global {
-        a {
-          color: $color_logo_dark;
-          margin: 0 2px;
-          font-size: 17px;
-          padding: 5px;
-          border-radius: 0;
-
-          &:hover {
-            color: white;
-          }
-
-          .x-icon-facebook-square:before {
-            content: "\f09a";
-          }
-
-          .x-icon-twitter-square:before {
-            content: "\f099";
-          }
-
-          .x-icon-google-plus-square:before {
-            content: "\f0d5";
-          }
-        }
-      }
-
-      &.desktop {
-
-        //desktop social icons in navigation styling
-        .x-social-global {
-          transition: all $nav_animation_duration;
-          float: right;
-          border-left: 1px solid #cccccc;
-          padding-left: 20px;
-          margin: 28px 0 0 20px;
-        }
-      }
-
-      &.mobile {
-
-        .x-nav {
-          margin-bottom: 15px;
-        }
-
-        //mobile social icons in navigation styling
-        .x-social-global {
-          margin-bottom: 10px;
-          text-align: center;
-
-          a {
-            margin: 0 10px;
-          }
-        }
-      }
-    }
-  }
-
-
-  //top of page
-  @include bp-dektop {
-    &.headroom--top {
-
-      .x-navbar {
-        background: rgba(255, 255, 255, 0) !important;
-        border-bottom: none;
-      }
-
-      #menu-main-menu,
-      .x-social-global{
-        opacity: 0;
-      }
-
-      .x-brand.img {
-        img {
-          opacity: 0;
-        }
-
-        &:before {
-          opacity: 1;
-          transition: all $nav_animation_duration;
-        }
-      }
-    }
-
-    &.headroom--unpinned {
-      .x-brand.img {
-        &:before {
-          opacity: 0;
-          transition: all $nav_animation_duration;
-        }
+      &:last-child {
+        margin-right: 0;
       }
     }
   }
 }
 
+// scroll styling for top navigation
+.masthead.headroom--not-top {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+
+  // navigation background
+  .x-navbar {
+    background: rgba(255, 255, 255, 1) !important;
+  }
+
+  // menu items
+  .x-nav-wrap.desktop .menu-item a{
+    color: $color-top-menu-items--pinned !important;
+
+    &:hover span {
+      box-shadow: 0 2px 0 0 $color-top-menu-items--pinned;
+    }
+  }
+
+  .x-social-global a{
+    color: $color-primary;
+  }
+}
+
+// mobile navigation toggle (important statement needed to override customizer styles)
+.nav-primary__mobile-button {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: black !important;
+
+  &:not(.collapsed) .x-icon-bars:before {
+    content: "\f00d";
+  }
+}

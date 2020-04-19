@@ -6,7 +6,7 @@ input[type="submit"]{
   position: relative;
   cursor: pointer;
   text-shadow: none;
-  background-color: $color_logo_dark;
+  background-color: $color-primary;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -22,7 +22,7 @@ input[type="submit"]{
 
   &:hover {
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.225);
-    background-color: $color_logo_dark;
+    background-color: $color-primary;
   }
 
   &.center{

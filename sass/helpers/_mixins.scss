@@ -1,23 +1,5 @@
 /* _mixin.scss */
 
-@mixin keyframes($animation-name) {
-  @-webkit-keyframes #{$animation-name} {
-    @content;
-  }
-  @-moz-keyframes #{$animation-name} {
-    @content;
-  }
-  @-ms-keyframes #{$animation-name} {
-    @content;
-  }
-  @-o-keyframes #{$animation-name} {
-    @content;
-  }
-  @keyframes #{$animation-name} {
-    @content;
-  }
-}
-
 @mixin animation($str) {
   -webkit-animation: #{$str};
      -moz-animation: #{$str};
@@ -56,25 +38,6 @@
   }
 
   @include optional-at-root(':-ms-input-placeholder') {
-    @content;
-  }
-}
-
-// breakpoints
-@mixin bp-dektop {
-  @media only screen and (min-width: 980px) {
-    @content;
-  }
-}
-
-@mixin bp-medium {
-  @media only screen and (max-width: 40em) {
-    @content;
-  }
-}
-
-@mixin bp-small {
-  @media only screen and (max-width: 30em) {
     @content;
   }
 }

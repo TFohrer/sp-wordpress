@@ -80,7 +80,7 @@ function load_style_files($manifest)
 
 }
 
-add_action( 'wp_enqueue_scripts', function() use ($manifest) {load_style_files($manifest);} );
+add_action( 'wp_enqueue_scripts', function() use ($manifest) {load_style_files($manifest);});
 
 /** additional js **/
 

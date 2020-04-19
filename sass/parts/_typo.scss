@@ -1,6 +1,6 @@
 // font adjustments for mobile
 
-@include bp-small{
+@include breakpoint-down(md){
     h2{
       &.h1{
         font-size: 5rem;

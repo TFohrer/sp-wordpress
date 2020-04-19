@@ -1,17 +1,20 @@
 /*_variables.scss */
 
 // colors
+
+$color-primary: #007965;
+
+$color-top-menu-items: white;
+$color-top-menu-items--pinned: black;
+
 $color_blue_highlight: #9e9f9e;
 $color_blue_highlight_rgb: rgb(78,91,108);
-
-$color_logo_dark: #007965;
-$color_logo_dark_rgb: rgb(14,63,127);
-
-$color_logo_light_rgb: rgb(34,121,193);
-
-$cubic: cubic-bezier(.64,.09,.08,1);
 
 $border_grey: #e5e5e5;
 $nav_height: 75px;
 $reduced_nav_height: 75px;
-$nav_animation_duration: 1s;
+
+
+// timing
+$timing-top-navigation: .75s;
+//$nav_animation_duration: 1s;

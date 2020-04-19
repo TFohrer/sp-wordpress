@@ -2,10 +2,10 @@
 /* import helper */
 @import "helpers/variables";
 @import "helpers/mixins";
+@import "helpers/media-queries";
 
 /* import page part stylings */
 @import "parts/header";
-@import "parts/forms";
 @import "parts/review-slider";
 @import "parts/footer";
 @import "parts/container";
