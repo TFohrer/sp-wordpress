@@ -71,24 +71,25 @@
 }
 
 // special logo styles for the home page only (atm)
-.home {
-  .nav-primary__logo-clean {
-    display: block;
-    opacity: 1;
-  }
+@include breakpoint-up(md){
+  .home {
+    .nav-primary__logo-clean {
+      display: block;
+      opacity: 1;
+    }
 
-  .nav-primary__logo {
-    opacity: 0;
-  }
+    .nav-primary__logo {
+      opacity: 0;
+    }
 
-  .masthead.headroom--not-top .nav-primary__logo {
-    opacity: 1;
-  }
-  .masthead.headroom--not-top .nav-primary__logo-clean {
-    opacity: 0;
+    .masthead.headroom--not-top .nav-primary__logo {
+      opacity: 1;
+    }
+    .masthead.headroom--not-top .nav-primary__logo-clean {
+      opacity: 0;
+    }
   }
 }
-
 // special logo styles end
 
 // scroll styling for top navigation
