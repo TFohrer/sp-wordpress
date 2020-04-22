@@ -5,27 +5,9 @@
 // default top navigation styles (not scrolled)
 .masthead {
   @include breakpoint-up(md) {
-    position: fixed;
+    //position: fixed;
     z-index: 99;
     width: 100%;
-  }
-}
-
-.masthead .x-navbar {
-  @include breakpoint-up(md) {
-    background: rgba(255, 255, 255, 0) !important; // important needed to overwrite the theme settings
-    transition: background-color $timing-top-navigation;
-    opacity: 0.99;
-  }
-}
-
-// desktop menu items
-.masthead .x-nav-wrap.desktop .menu-item a{
-  color: $color-top-menu-items !important;
-  transition: color $timing-top-navigation;
-
-  &:hover span {
-    box-shadow: 0 2px 0 0 $color-top-menu-items;
   }
 }
 
@@ -47,13 +29,14 @@
     font-size: 25px;
     border-radius: 0;
 
-    @include breakpoint-up(md) {
-      background: none;
+    &:hover{
       color: white;
+    }
+
+    @include breakpoint-up(md) {
       font-size: 20px;
       margin: 0 5px;
       padding: 5px;
-      transition: color $timing-top-navigation;
 
       &:last-child {
         margin-right: 0;
@@ -61,6 +44,42 @@
     }
   }
 }
+
+/** extra styles for home navbar **/
+.home .masthead {
+  @include breakpoint-up(md) {
+    position: fixed;
+  }
+}
+
+.home .masthead .x-navbar {
+  @include breakpoint-up(md) {
+    background: rgba(255, 255, 255, 0) !important; // important needed to overwrite the theme settings
+    transition: background-color $timing-top-navigation;
+    opacity: 0.99;
+  }
+}
+
+// desktop menu items
+.home .masthead .x-nav-wrap.desktop .menu-item a {
+  color: $color-top-menu-items !important;
+  transition: color $timing-top-navigation;
+
+  &:hover span {
+    box-shadow: 0 2px 0 0 $color-top-menu-items;
+  }
+}
+
+// social icons
+.home .masthead .x-social-global a {
+  @include breakpoint-up(md) {
+    background: none;
+    color: white;
+    transition: color $timing-top-navigation;
+  }
+}
+
+/** end extra styles for home navbar **/
 
 // brand logo
 .nav-primary__logo-clean {
@@ -71,7 +90,7 @@
 }
 
 // special logo styles for the home page only (atm)
-@include breakpoint-up(md){
+@include breakpoint-up(md) {
   .home {
     .nav-primary__logo-clean {
       display: block;
@@ -85,15 +104,19 @@
     .masthead.headroom--not-top .nav-primary__logo {
       opacity: 1;
     }
+
     .masthead.headroom--not-top .nav-primary__logo-clean {
       opacity: 0;
     }
   }
 }
+
 // special logo styles end
 
 // scroll styling for top navigation
 .masthead.headroom--not-top {
+  position: fixed;
+  top: 0;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 
   // navigation background
@@ -102,7 +125,7 @@
   }
 
   // menu items
-  .x-nav-wrap.desktop .menu-item a{
+  .x-nav-wrap.desktop .menu-item a {
     color: $color-top-menu-items--pinned !important;
 
     &:hover span {
@@ -110,8 +133,12 @@
     }
   }
 
-  .x-social-global a{
+  .x-social-global a {
     color: $color-primary;
+
+    &:hover{
+      color: white;
+    }
   }
 }
 
