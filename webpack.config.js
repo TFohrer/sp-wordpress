@@ -7,11 +7,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-
 
 module.exports = {
     entry: ['./js/main.js', './sass/main.scss'],
