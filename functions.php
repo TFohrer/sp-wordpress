@@ -86,7 +86,7 @@ function load_javascript_files($manifest) {
 
 add_action('wp_enqueue_scripts', function() use ($manifest) { load_javascript_files($manifest); },99);
 
-/*
+
 // Fully Disable Gutenberg editor
 add_filter('use_block_editor_for_post_type', '__return_false', 10);
 // Don't load Gutenberg-related stylesheets.
@@ -96,7 +96,7 @@ function remove_block_css() {
     wp_dequeue_style( 'wp-block-library-theme' ); // WordPress core
     wp_dequeue_style( 'wc-block-style' ); // WooCommerce
     wp_dequeue_style( 'storefront-gutenberg-blocks' ); // Storefront theme
-}*/
+}
 
 // Custom x-theme DE translations
 function load_child_language() {
@@ -104,11 +104,10 @@ function load_child_language() {
 }
 add_action( 'after_setup_theme', 'load_child_language' );
 
-// custom cornerstone elements
 
+// custom cornerstone elements
 function register_custom_cornerstone_elements() {
     require_once('cornerstone/elements/image-text-link.php');
-    //require_once('cornerstone/elements/my-element.php');
 }
 
 add_action( 'cs_register_elements', 'register_custom_cornerstone_elements' );
