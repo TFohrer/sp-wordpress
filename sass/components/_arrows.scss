@@ -1,0 +1,17 @@
+$shaft-width: 64px;
+$shaft-thickness: 1px;
+$arrow-head-width: 8px;
+$arrow-head-thickness: $shaft-thickness;
+
+.arrow {
+  width: $shaft-width;
+  transition: all 0.2s;
+}
+
+.arrow--right {
+
+}
+
+.arrow__shaft {
+
+}

@@ -1,5 +1,7 @@
 <?php
 
+define( 'CS_APP_DEV_TOOLS', true );
+
 // =============================================================================
 // FUNCTIONS.PHP
 // -----------------------------------------------------------------------------
@@ -21,8 +23,6 @@ add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
 
 // Additional Functions
 // =============================================================================
-
-static $meta_key = 'wpuf_form';
 
 $manifestStr = file_get_contents(dirname(__FILE__)."/build/manifest.json");
 $manifest = json_decode($manifestStr, true);
@@ -51,16 +51,7 @@ function add_event_post_type( $types ) {
 add_filter( 'cs_recent_posts_post_types', 'add_event_post_type', 999 );
 
 
-/** additional shortcodes **/
-
-include_once "shortcodes/bp_button.php";
-include_once "shortcodes/bp_content_box.php";
-
-
-
 /** wp user frontend hook **/
-
-
 add_action('custom_review_render_hook', 'custom_review_form_render', 10, 3 );
 function custom_review_form_render( $form_id, $post_id, $form_settings ) {
     // do what ever you want
@@ -95,8 +86,8 @@ function load_javascript_files($manifest) {
 
 add_action('wp_enqueue_scripts', function() use ($manifest) { load_javascript_files($manifest); },99);
 
-
-// Fully Disable Gutenberg editor.
+/*
+// Fully Disable Gutenberg editor
 add_filter('use_block_editor_for_post_type', '__return_false', 10);
 // Don't load Gutenberg-related stylesheets.
 add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
@@ -105,10 +96,19 @@ function remove_block_css() {
     wp_dequeue_style( 'wp-block-library-theme' ); // WordPress core
     wp_dequeue_style( 'wc-block-style' ); // WooCommerce
     wp_dequeue_style( 'storefront-gutenberg-blocks' ); // Storefront theme
-}
+}*/
 
 // Custom x-theme DE translations
 function load_child_language() {
     load_child_theme_textdomain( '__x__', get_stylesheet_directory() . '/languages' );
 }
 add_action( 'after_setup_theme', 'load_child_language' );
+
+// custom cornerstone elements
+
+function register_custom_cornerstone_elements() {
+    require_once('cornerstone/elements/image-text-link.php');
+    //require_once('cornerstone/elements/my-element.php');
+}
+
+add_action( 'cs_register_elements', 'register_custom_cornerstone_elements' );

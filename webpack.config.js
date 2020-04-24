@@ -6,9 +6,12 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // include the css extraction and minification plugins
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const WebpackAssetsManifest = require('webpack-assets-manifest');
+
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+
 
 module.exports = {
     entry: ['./js/main.js', './sass/main.scss'],
@@ -32,8 +35,15 @@ module.exports = {
             // compile all .scss files to plain old css + autoprefix
             {
                 test: /\.(sass|scss)$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader','sass-loader']
-            }
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]',
+                },
+            },
         ]
     },
     plugins: [
@@ -53,9 +63,7 @@ module.exports = {
                 parallel: true
             }),
             // enable the css minification plugin
-            new OptimizeCSSAssetsPlugin({
-
-            })
+            new OptimizeCSSAssetsPlugin({})
         ]
     }
 };

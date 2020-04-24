@@ -4,11 +4,8 @@
 
 // default top navigation styles (not scrolled)
 .masthead {
-  @include breakpoint-up(md) {
-    //position: fixed;
-    z-index: 99;
-    width: 100%;
-  }
+  z-index: 99;
+  width: 100%;
 }
 
 // social icons

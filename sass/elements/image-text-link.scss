@@ -1,0 +1,95 @@
+/**
+styling for the custom cornerstone element 'Image Text Link' (cornerstone/elements/image-text-link.php)
+ */
+.image-text-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-bottom: calc(100% / (4 / 3));
+}
+
+.image-text-link:hover {
+  .image-text-link__image {
+    transform: scale(1.2);
+  }
+
+  .image-text-link__read-more {
+    transform: translateY(0);
+  }
+}
+
+.image-text-link__image {
+  position: absolute;
+  transition: transform .5s;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.image-text-link__overlay-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  transition: background-color .5s;
+  padding: 20px 20px 30px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+
+  @include breakpoint-up(md) {
+    padding: 45px 30px 30px;
+    background: rgba(0, 0, 0, 0.4);
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+
+.image-text-link__headline,
+.image-text-link__text {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7);
+}
+
+.image-text-link__headline {
+  font-family: Poppins, sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+
+  @include breakpoint-up(md){
+    margin-bottom: 20px;
+  }
+
+  @include breakpoint-up(lg) {
+    margin-bottom: 25px;
+  }
+}
+
+.image-text-link__text {
+  font-weight: bold;
+}
+
+.image-text-link__read-more {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  color: $color-highlight;
+  text-transform: uppercase;
+  font-size: 12px;
+
+  @include breakpoint-up(md) {
+    transition: transform .5s;
+    transform: translateY(200%);
+  }
+
+}
