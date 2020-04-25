@@ -7,7 +7,6 @@ $arrow-head-thickness: $shaft-thickness;
   width: $shaft-width;
   transition: all 0.2s;
   display: inline-block;
-
 }
 
 .arrow--right {
@@ -27,7 +26,7 @@ $arrow-head-thickness: $shaft-thickness;
   &:before,
   &:after {
     background-color: $color-highlight;
-    content: '';
+    content: "";
     display: block;
     height: $arrow-head-thickness;
     width: $arrow-head-width;

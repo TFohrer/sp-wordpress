@@ -1,7 +1,7 @@
 // Buttons Color
 
 a.x-btn,
-input[type="submit"]{
+input[type="submit"] {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -15,33 +15,33 @@ input[type="submit"]{
   border: none;
   user-select: none;
   border-radius: 2px;
-  transition: box-shadow .3s ease-out;
+  transition: box-shadow 0.3s ease-out;
   box-shadow: none;
   overflow: hidden;
   z-index: 1;
 
   &:hover {
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.225);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.225);
     background-color: $color-primary;
   }
 
-  &.center{
+  &.center {
     margin: 0 auto;
     left: 0;
     right: 0;
 
     &.more-button,
-    &.contact-button{
-      font-weight:bold;
+    &.contact-button {
+      font-weight: bold;
       position: absolute;
       bottom: 30px;
     }
 
-    &.more-button{
+    &.more-button {
       width: 145px;
     }
 
-    &.contact-button{
+    &.contact-button {
       width: 200px;
     }
   }

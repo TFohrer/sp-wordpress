@@ -26,7 +26,7 @@
     font-size: 25px;
     border-radius: 0;
 
-    &:hover{
+    &:hover {
       color: white;
     }
 
@@ -51,7 +51,12 @@
 
 .home .masthead .x-navbar {
   @include breakpoint-up(md) {
-    background: rgba(255, 255, 255, 0) !important; // important needed to overwrite the theme settings
+    background: rgba(
+      255,
+      255,
+      255,
+      0
+    ) !important; // important needed to overwrite the theme settings
     transition: background-color $timing-top-navigation;
     opacity: 0.99;
   }
@@ -112,8 +117,7 @@
 
 // scroll styling for top navigation
 .masthead.headroom--not-top {
-
-  @include breakpoint-up(md){
+  @include breakpoint-up(md) {
     position: fixed;
     top: 0;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
@@ -136,7 +140,7 @@
   .x-social-global a {
     color: $color-primary;
 
-    &:hover{
+    &:hover {
       color: white;
     }
   }

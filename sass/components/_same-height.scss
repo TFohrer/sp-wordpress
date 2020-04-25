@@ -1,14 +1,14 @@
 /** styles for same height elements that are in one row with the help of flexbox **/
 
-.same-height-container{
+.same-height-container {
   display: flex;
   flex-wrap: wrap;
 
-  .x-column{
-    display:flex;
-    flex-direction:column;
+  .x-column {
+    display: flex;
+    flex-direction: column;
 
-    .x-text{
+    .x-text {
       flex: 1;
     }
   }
