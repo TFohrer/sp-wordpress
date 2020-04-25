@@ -54,6 +54,11 @@ function image_text_link_builder_setup()
 function image_text_link_render($data)
 {
     extract($data);
+
+    $id = $id ?? '';
+    $mod_id = $mod_id ?? '';
+    $class = $class ?? '';
+
     $atts = cs_atts(array(
         'id' => $id,
         'class' => cs_attr_class($mod_id, 'image-text-link', $class),

@@ -22,7 +22,7 @@ styling for the custom cornerstone element 'Image Text Link' (cornerstone/elemen
 
 .image-text-link__image {
   position: absolute;
-  transition: transform .5s;
+  transition: transform .5s, opacity .4s !important;
   height: 100%;
   width: 100%;
   object-fit: cover;
