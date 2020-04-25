@@ -92,6 +92,6 @@ styling for the custom cornerstone element 'Image Text Link' (cornerstone/elemen
 
   @include breakpoint-up(md) {
     transition: transform .5s;
-    //transform: translateY(200%);
+    transform: translateY(200%);
   }
 }

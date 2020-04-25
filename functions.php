@@ -1,6 +1,6 @@
 <?php
 
-define( 'CS_APP_DEV_TOOLS', true );
+//define( 'CS_APP_DEV_TOOLS', true );
 
 // =============================================================================
 // FUNCTIONS.PHP
@@ -86,18 +86,6 @@ function load_javascript_files($manifest) {
 
 add_action('wp_enqueue_scripts', function() use ($manifest) { load_javascript_files($manifest); },99);
 
-
-// Fully Disable Gutenberg editor
-add_filter('use_block_editor_for_post_type', '__return_false', 10);
-// Don't load Gutenberg-related stylesheets.
-add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
-function remove_block_css() {
-    wp_dequeue_style( 'wp-block-library' ); // WordPress core
-    wp_dequeue_style( 'wp-block-library-theme' ); // WordPress core
-    wp_dequeue_style( 'wc-block-style' ); // WooCommerce
-    wp_dequeue_style( 'storefront-gutenberg-blocks' ); // Storefront theme
-}
-
 // Custom x-theme DE translations
 function load_child_language() {
     load_child_theme_textdomain( '__x__', get_stylesheet_directory() . '/languages' );
@@ -111,3 +99,84 @@ function register_custom_cornerstone_elements() {
 }
 
 add_action( 'cs_register_elements', 'register_custom_cornerstone_elements' );
+
+// custom logo showcase shortcase (template)
+//generating shortcode with post id
+function smls_generate_shortcode( $atts, $content = null ){
+    $args = array(
+        'post_type' => 'smartlogo',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+        'p' => $atts[ 'id' ]
+    );
+    foreach ( $atts as $key => $val ) {
+        $$key = $val;
+    }
+    $smls_logo = new WP_Query( $args );
+    if ( $smls_logo -> have_posts() ) :
+        ob_start();
+        include('shortcodes/logo-showcase.php');
+        $smls_showcase = ob_get_contents();
+    endif;
+    wp_reset_query();
+    ob_end_clean();
+    return $smls_showcase;
+}
+remove_shortcode('smls');
+add_shortcode( 'smls', 'smls_generate_shortcode');
+
+
+// clean / remove not needed styles and javascript files from plugins / themes
+
+// Fully Disable Gutenberg editor
+add_filter('use_block_editor_for_post_type', '__return_false', 10);
+// Don't load Gutenberg-related stylesheets.
+add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
+function remove_block_css() {
+    wp_dequeue_style( 'wp-block-library' ); // WordPress core
+    wp_dequeue_style( 'wp-block-library-theme' ); // WordPress core
+    wp_dequeue_style( 'wc-block-style' ); // WooCommerce
+    wp_dequeue_style( 'storefront-gutenberg-blocks' ); // Storefront theme
+}
+
+
+function remove_plugins_assets(){
+
+    // wordpress
+    wp_dequeue_script('comment-reply');
+}
+add_action( 'wp_enqueue_scripts', 'remove_plugins_assets', 100 );
+
+function remove_plugins_actions(){
+    remove_action('wp_enqueue_scripts','smls_register_assets', 0);
+}
+
+add_action('wp', 'remove_plugins_actions');
+
+// remove wordpress emoji
+function remove_emoji()
+{
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+    add_filter('tiny_mce_plugins', 'remove_tinymce_emoji');
+}
+add_action('init', 'remove_emoji');
+function remove_tinymce_emoji($plugins)
+{
+    if (!is_array($plugins))
+    {
+        return array();
+    }
+    return array_diff($plugins, array(
+        'wpemoji'
+    ));
+}
+
+// remove smart logo showcase scripts
+global $smls_obj;
+remove_action('wp_enqueue_scripts',array($smls_obj, 'smls_register_assets'));

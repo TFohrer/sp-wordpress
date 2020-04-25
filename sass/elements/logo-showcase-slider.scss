@@ -1,0 +1,34 @@
+.logo-showcase-slider {
+  overflow: hidden;
+}
+
+.logo-showcase-slider__container {
+  display: flex;
+  will-change: transform;
+}
+
+.logo-showcase-slider__slide {
+  position: relative;
+  flex: 1 0 calc(100% / 3);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint-up(md) {
+    flex: 1 0 calc(100% / 5);
+  }
+}
+
+.logo-showcase-slider__slide img {
+  max-height: 100px;
+  width: auto !important;
+
+  @include breakpoint-up(md) {
+    filter: grayscale(100%);
+
+    &:hover {
+      filter: grayscale(0);
+    }
+  }
+}
