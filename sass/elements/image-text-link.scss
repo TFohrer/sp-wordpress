@@ -64,7 +64,7 @@ styling for the custom cornerstone element 'Image Text Link' (cornerstone/elemen
   font-weight: 500;
   margin-bottom: 10px;
 
-  @include breakpoint-up(md){
+  @include breakpoint-up(md) {
     margin-bottom: 20px;
   }
 
@@ -79,6 +79,9 @@ styling for the custom cornerstone element 'Image Text Link' (cornerstone/elemen
 
 .image-text-link__read-more {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: 20px;
   left: 0;
   width: 100%;
@@ -89,7 +92,6 @@ styling for the custom cornerstone element 'Image Text Link' (cornerstone/elemen
 
   @include breakpoint-up(md) {
     transition: transform .5s;
-    transform: translateY(200%);
+    //transform: translateY(200%);
   }
-
 }

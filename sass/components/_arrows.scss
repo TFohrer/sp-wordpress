@@ -1,17 +1,58 @@
-$shaft-width: 64px;
+$shaft-width: 20px;
 $shaft-thickness: 1px;
-$arrow-head-width: 8px;
+$arrow-head-width: 6px;
 $arrow-head-thickness: $shaft-thickness;
 
 .arrow {
   width: $shaft-width;
   transition: all 0.2s;
+  display: inline-block;
+
 }
 
 .arrow--right {
-
+  margin-left: 8px;
 }
 
 .arrow__shaft {
+  width: $shaft-width;
+  display: block;
+  background-color: $color-highlight;
+  height: $shaft-thickness;
+  position: relative;
+  transition: all 0.2s;
+  transition-delay: 0s;
+  will-change: transform;
 
+  &:before,
+  &:after {
+    background-color: $color-highlight;
+    content: '';
+    display: block;
+    height: $arrow-head-thickness;
+    width: $arrow-head-width;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all 0.2s;
+    transition-delay: 0s;
+  }
+
+  &:before {
+    transform-origin: top right;
+  }
+
+  &:after {
+    transform-origin: bottom right;
+  }
+}
+
+.arrow--right .arrow__shaft {
+  &:before {
+    transform: rotate(40deg);
+  }
+
+  &:after {
+    transform: rotate(-40deg);
+  }
 }

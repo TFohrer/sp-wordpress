@@ -67,7 +67,7 @@ function image_text_link_render($data)
             <p class="image-text-link__text"><?php echo $content ?></p>
             <p class="image-text-link__read-more">
                 Mehr erfahren
-                <span class="arrow arrow--right"><span class="arrow__shaft"></span></span>
+                <!--<span class="arrow arrow--right"><span class="arrow__shaft"></span></span>-->
             </p>
         </div>
     </a>
