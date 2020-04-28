@@ -1,2 +1,2 @@
 import "./navigation";
-import "./logo-showcase-slider/index";
+import "./logo-showcase-slider/logo-showcase-slider";
