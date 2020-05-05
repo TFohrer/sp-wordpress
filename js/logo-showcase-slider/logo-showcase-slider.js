@@ -4,6 +4,11 @@ import { autoPlay } from "./autoPlay";
 (function () {
   function initSlider() {
     const slider = document.querySelector(".logo-showcase-slider");
+
+    if (!slider) {
+      return;
+    }
+
     const options = {
       align: "start",
       loop: true,
