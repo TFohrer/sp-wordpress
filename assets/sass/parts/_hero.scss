@@ -25,6 +25,10 @@
   }
 
   @include breakpoint-up(lg) {
-    padding-top: 50px;
+    padding-top: 65px;
   }
+}
+
+.page-hero__subheadline {
+  font-size: 1.1em;
 }

@@ -34,11 +34,9 @@ $subheadline = get_post_meta(get_the_ID(), 'subheadline', true);
                   ]); ?>
                 </div>
                 <?php } ?>
-            <!--<picture class="page-hero__image"></picture>-->
             <div class="page-hero__headline-container">
               <h1 class="headline--border-bottom text-center"><?php echo $headline; ?></h1>
-              <p class="no-margin-bottom"><?php echo $subheadline; ?></p>
-              
+              <p class="page-hero__subheadline no-margin-bottom"><?php echo $subheadline; ?></p>
             </div>
           </section>
             
