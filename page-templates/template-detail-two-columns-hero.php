@@ -27,9 +27,7 @@ $subheadline = get_post_meta(get_the_ID(), 'subheadline', true);
           <!-- HERO  -->
           <section class="page-hero page-hero--two-columns">
 
-            <?php if (has_post_thumbnail()) {<?php
-                //$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
-                ?>
+            <?php if (has_post_thumbnail()) { ?>
                  <div class="page-hero__image-container">
                   <?php the_post_thumbnail('large', [
                       'class' => 'page-hero__image',
