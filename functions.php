@@ -18,104 +18,124 @@
 // Enqueue Parent Stylesheet
 // =============================================================================
 
-add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
-
+add_filter('x_enqueue_parent_stylesheet', '__return_true');
 
 // Additional Functions
 // =============================================================================
 
-$manifestStr = file_get_contents(dirname(__FILE__)."/build/manifest.json");
+$manifestStr = file_get_contents(dirname(__FILE__) . "/build/manifest.json");
 $manifest = json_decode($manifestStr, true);
 
-
 /** add post-type "Seminar Bewertungen" **/
-add_action( 'init', 'create_post_type' );
-function create_post_type() {
-    register_post_type( 'seminar_rating',
-        array(
-            'labels' => array(
-                'name' => __( 'Seminar Bewertungen' ),
-                'singular_name' => __( 'Seminar Bewertung' )
-            ),
-            'public' => true,
-            'has_archive' => false,
-            'supports' => array( 'title', 'editor', 'comments', 'thumbnail' ),
-        )
-    );
+add_action('init', 'create_post_type');
+function create_post_type()
+{
+    register_post_type('seminar_rating', [
+        'labels' => [
+            'name' => __('Seminar Bewertungen'),
+            'singular_name' => __('Seminar Bewertung'),
+        ],
+        'public' => true,
+        'has_archive' => false,
+        'supports' => ['title', 'editor', 'comments', 'thumbnail'],
+    ]);
 }
 
-function add_event_post_type( $types ) {
+function add_event_post_type($types)
+{
     $types['seminar_rating'] = 'seminar_rating';
     return $types;
 }
-add_filter( 'cs_recent_posts_post_types', 'add_event_post_type', 999 );
-
+add_filter('cs_recent_posts_post_types', 'add_event_post_type', 999);
 
 /** wp user frontend hook **/
-add_action('custom_review_render_hook', 'custom_review_form_render', 10, 3 );
-function custom_review_form_render( $form_id, $post_id, $form_settings ) {
+add_action('custom_review_render_hook', 'custom_review_form_render', 10, 3);
+function custom_review_form_render($form_id, $post_id, $form_settings)
+{
     // do what ever you want
 
-    $form_vars = get_post_meta( $form_id, 'wpuf_form' , true );
-    $form_settings = get_post_meta( $form_id, 'wpuf_form_settings', true );
+    $form_vars = get_post_meta($form_id, 'wpuf_form', true);
+    $form_settings = get_post_meta($form_id, 'wpuf_form_settings', true);
 }
 
 /** additional styles */
 function load_style_files($manifest)
 {
-    $cssFileURI = get_stylesheet_directory_uri() . '/build/' . $manifest['main.css'];
-    wp_enqueue_style( 'main_css', $cssFileURI );
+    $cssFileURI =
+        get_stylesheet_directory_uri() . '/build/' . $manifest['main.css'];
+    wp_enqueue_style('main_css', $cssFileURI);
 
     //remove plugin styles
     wp_dequeue_style('wpuf-css');
-
 }
 
-add_action( 'wp_enqueue_scripts', function() use ($manifest) {load_style_files($manifest);});
+add_action(
+    'wp_enqueue_scripts',
+    function () use ($manifest) {
+        load_style_files($manifest);
+    },
+    99
+);
 
 /** additional js **/
 
-
-function load_javascript_files($manifest) {
-
+function load_javascript_files($manifest)
+{
     $mainJsFileName = $manifest['main.js'];
 
-    wp_register_script('main_js', get_stylesheet_directory_uri() . '/build/'. $mainJsFileName, array('jquery'), true, true );
+    wp_register_script(
+        'main_js',
+        get_stylesheet_directory_uri() . '/build/' . $mainJsFileName,
+        ['jquery'],
+        true,
+        true
+    );
     wp_enqueue_script('main_js');
 }
 
-add_action('wp_enqueue_scripts', function() use ($manifest) { load_javascript_files($manifest); },99);
+add_action(
+    'wp_enqueue_scripts',
+    function () use ($manifest) {
+        load_javascript_files($manifest);
+    },
+    99
+);
 
 // Custom x-theme DE translations
-function load_child_language() {
-    load_child_theme_textdomain( '__x__', get_stylesheet_directory() . '/languages' );
+function load_child_language()
+{
+    load_child_theme_textdomain(
+        '__x__',
+        get_stylesheet_directory() . '/languages'
+    );
 }
-add_action( 'after_setup_theme', 'load_child_language' );
-
+add_action('after_setup_theme', 'load_child_language');
 
 // custom cornerstone elements
-function register_custom_cornerstone_elements() {
-    require_once('cornerstone/elements/image-text-link.php');
+function register_custom_cornerstone_elements()
+{
+    require_once 'cornerstone/elements/image-text-link.php';
 }
 
-add_action( 'cs_register_elements', 'register_custom_cornerstone_elements' );
+add_action('cs_register_elements', 'register_custom_cornerstone_elements');
 
 // custom logo showcase shortcase (template)
 //generating shortcode with post id
-function smls_generate_shortcode( $atts, $content = null ){
-    $args = array(
+function smls_generate_shortcode($atts, $content = null)
+{
+    $args = [
         'post_type' => 'smartlogo',
         'post_status' => 'publish',
         'posts_per_page' => 1,
-        'p' => $atts[ 'id' ]
-    );
-    foreach ( $atts as $key => $val ) {
+        'p' => $atts['id'],
+    ];
+    foreach ($atts as $key => $val) {
         $$key = $val;
     }
-    $smls_logo = new WP_Query( $args );
-    if ( $smls_logo -> have_posts() ) :
+    $smls_logo = new WP_Query($args);
+    if ($smls_logo->have_posts()):
         ob_start();
-        include('shortcodes/logo-showcase.php');
+        include 'shortcodes/logo-showcase.php';
         $smls_showcase = ob_get_contents();
     endif;
     wp_reset_query();
@@ -123,32 +143,33 @@ function smls_generate_shortcode( $atts, $content = null ){
     return $smls_showcase;
 }
 remove_shortcode('smls');
-add_shortcode( 'smls', 'smls_generate_shortcode');
-
+add_shortcode('smls', 'smls_generate_shortcode');
 
 // clean / remove not needed styles and javascript files from plugins / themes
 
+add_filter('use_block_editor_for_post', '__return_false', 10);
 // Fully Disable Gutenberg editor
 add_filter('use_block_editor_for_post_type', '__return_false', 10);
 // Don't load Gutenberg-related stylesheets.
-add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
-function remove_block_css() {
-    wp_dequeue_style( 'wp-block-library' ); // WordPress core
-    wp_dequeue_style( 'wp-block-library-theme' ); // WordPress core
-    wp_dequeue_style( 'wc-block-style' ); // WooCommerce
-    wp_dequeue_style( 'storefront-gutenberg-blocks' ); // Storefront theme
+add_action('wp_enqueue_scripts', 'remove_block_css', 100);
+function remove_block_css()
+{
+    wp_dequeue_style('wp-block-library'); // WordPress core
+    wp_dequeue_style('wp-block-library-theme'); // WordPress core
+    wp_dequeue_style('wc-block-style'); // WooCommerce
+    wp_dequeue_style('storefront-gutenberg-blocks'); // Storefront theme
 }
 
-
-function remove_plugins_assets(){
-
+function remove_plugins_assets()
+{
     // wordpress
     wp_dequeue_script('comment-reply');
 }
-add_action( 'wp_enqueue_scripts', 'remove_plugins_assets', 100 );
+add_action('wp_enqueue_scripts', 'remove_plugins_assets', 100);
 
-function remove_plugins_actions(){
-    remove_action('wp_enqueue_scripts','smls_register_assets', 0);
+function remove_plugins_actions()
+{
+    remove_action('wp_enqueue_scripts', 'smls_register_assets', 0);
 }
 
 add_action('wp', 'remove_plugins_actions');
@@ -168,15 +189,12 @@ function remove_emoji()
 add_action('init', 'remove_emoji');
 function remove_tinymce_emoji($plugins)
 {
-    if (!is_array($plugins))
-    {
-        return array();
+    if (!is_array($plugins)) {
+        return [];
     }
-    return array_diff($plugins, array(
-        'wpemoji'
-    ));
+    return array_diff($plugins, ['wpemoji']);
 }
 
 // remove smart logo showcase scripts
 global $smls_obj;
-remove_action('wp_enqueue_scripts',array($smls_obj, 'smls_register_assets'));
+remove_action('wp_enqueue_scripts', [$smls_obj, 'smls_register_assets']);

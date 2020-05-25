@@ -8,6 +8,11 @@
   width: 100%;
 }
 
+.page-child .masthead {
+  box-shadow: 0 1px 1px rgba(204, 204, 204, 0.2);
+  transition: box-shadow $timing-top-navigation;
+}
+
 // social icons
 .masthead .x-social-global {
   margin: 25px 0;

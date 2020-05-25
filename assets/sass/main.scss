@@ -2,6 +2,7 @@
 @import "helpers/variables";
 @import "helpers/mixins";
 @import "helpers/media-queries";
+@import "helpers/utility";
 
 /* import page part stylings */
 @import "parts/header";
@@ -9,7 +10,7 @@
 @import "parts/footer";
 @import "parts/container";
 @import "parts/typo";
-
+@import "parts/hero";
 /* import components */
 
 @import "components/buttons";
