@@ -14,6 +14,28 @@
   transition: box-shadow $timing-top-navigation;
 }
 
+// logo
+.x-brand {
+  @include breakpoint-between(md, lg) {
+    margin-top: 20px !important;
+  }
+}
+
+.x-brand img {
+  @include breakpoint-between(md, lg) {
+    width: 130px !important;
+  }
+}
+
+// navigation items
+.masthead .menu-item a {
+  @include breakpoint-between(md, lg) {
+    font-size: 12px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
 // social icons
 .masthead .x-social-global {
   margin: 25px 0;
@@ -22,6 +44,11 @@
   @include breakpoint-up(md) {
     float: right;
     border-left: 1px solid #cccccc;
+    padding-left: 10x;
+    margin: 28px 0 0 15px;
+  }
+
+  @include breakpoint-up(lg) {
     padding-left: 20px;
     margin: 28px 0 0 20px;
   }
@@ -37,13 +64,17 @@
     }
 
     @include breakpoint-up(md) {
-      font-size: 20px;
+      font-size: 16px;
       margin: 0 5px;
       padding: 5px;
 
       &:last-child {
         margin-right: 0;
       }
+    }
+
+    @include breakpoint-up(lg) {
+      font-size: 20px;
     }
   }
 }
@@ -95,6 +126,10 @@
   position: absolute;
   top: 5px;
   left: 0;
+
+  @include breakpoint-between(md, lg) {
+    top: 20px;
+  }
 }
 
 // special logo styles for the home page only (atm)
