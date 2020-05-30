@@ -28,7 +28,7 @@
 }
 
 // navigation items
-.masthead .menu-item a {
+.masthead .x-nav-wrap.desktop .menu-item a {
   @include breakpoint-between(md, lg) {
     font-size: 12px !important;
     padding-left: 10px !important;
@@ -40,29 +40,25 @@
     position: relative;
   }
 
-  @include breakpoint-up(md) {
-    span::after {
-      display: block !important;
-      position: absolute;
-      content: "";
-      bottom: -2px;
-      left: 0;
-      right: 0;
-      margin: auto !important;
-      width: 0;
-      color: transparent;
-      background: black;
-      height: 2px;
-      transition: width 0.5s;
-    }
+  span::after {
+    display: block !important;
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    margin: auto !important;
+    width: 0;
+    color: transparent;
+    background: black;
+    height: 2px;
+    transition: width 0.5s;
   }
 }
 
-.masthead .menu-item a:hover span::after,
-.masthead .current_page_item span::after {
-  @include breakpoint-up(md) {
-    width: 100% !important;
-  }
+.masthead .x-nav-wrap.desktop .menu-item a:hover span::after,
+.masthead .x-nav-wrap.desktop .current_page_item span::after {
+  width: 100% !important;
 }
 
 // social icons
@@ -131,26 +127,11 @@
 // desktop menu items
 .home .masthead .x-nav-wrap.desktop .menu-item a {
   color: $color-top-menu-items !important;
-  transition: box-shadow $timing-top-navigation;
+}
 
-  span:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: ".";
-    color: transparent;
-    background: #aaa;
-    height: 1px;
-    transition: width $timing-top-navigation;
-  }
-
-  &:hover span:after {
-    width: 100%;
-    //box-shadow: 0 2px 0 0 $color-top-menu-items;
-  }
+.home .masthead .x-nav-wrap.desktop .menu-item a span::after,
+.home .masthead .x-nav-wrap.desktop .current_page_item span::after {
+  background: $color-top-menu-items;
 }
 
 // social icons
@@ -217,7 +198,7 @@
   .x-nav-wrap.desktop .menu-item a {
     color: $color-top-menu-items--pinned !important;
 
-    &:hover span {
+    &:hover span:after {
       box-shadow: 0 2px 0 0 $color-top-menu-items--pinned;
     }
   }
