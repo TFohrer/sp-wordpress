@@ -198,3 +198,8 @@ function remove_tinymce_emoji($plugins)
 // remove smart logo showcase scripts
 global $smls_obj;
 remove_action('wp_enqueue_scripts', [$smls_obj, 'smls_register_assets']);
+
+// custom image sizes
+add_theme_support('post-thumbnails');
+
+add_image_size('blog-list-thumbnail size', 400, 0);

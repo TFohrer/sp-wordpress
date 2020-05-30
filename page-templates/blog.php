@@ -28,7 +28,7 @@ get_template_part('template-parts/header/header', 'sp');
                         if (!$isFirstPost): ?>
                             <a href="<?php echo $permalink; ?>">
                         <?php endif;
-                        the_post_thumbnail('medium', [
+                        the_post_thumbnail('blog-list-thumbnail size', [
                             'class' => 'blog-list-item__image',
                         ]);
                         if (!$isFirstPost): ?>
