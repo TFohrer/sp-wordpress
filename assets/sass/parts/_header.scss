@@ -57,7 +57,8 @@
 }
 
 .masthead .x-nav-wrap.desktop .menu-item a:hover span::after,
-.masthead .x-nav-wrap.desktop .current_page_item span::after {
+.masthead .x-nav-wrap.desktop .current_page_item span::after,
+.masthead .x-nav-wrap.desktop .current_page_parent span::after {
   width: 100% !important;
 }
 
