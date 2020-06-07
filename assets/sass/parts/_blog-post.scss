@@ -1,0 +1,53 @@
+.blog-post {
+  max-width: 1050px !important;
+}
+
+.blog-post__entry {
+  @include breakpoint-up(sm) {
+    margin-top: 45px;
+  }
+}
+
+.blog-post__entry-image {
+  position: relative;
+  max-width: 475px;
+  margin: 0 auto -15px;
+}
+
+.blog-post__entry h1 {
+  font-size: 1.6em;
+  width: 90%;
+
+  @include breakpoint-up(sm) {
+    font-size: 1.9em;
+  }
+
+  @include breakpoint-up(md) {
+    font-size: 2.3em;
+  }
+}
+
+.blog-post__entry-image:after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 70%, #ffffff);
+}
+
+// improve readability for post content
+.blog-post__content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.blog-post__content .x-text {
+  line-height: 1.6em !important;
+}
+
+.blog-post__content .entry-content {
+  margin-top: 0;
+}

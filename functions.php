@@ -203,3 +203,4 @@ remove_action('wp_enqueue_scripts', [$smls_obj, 'smls_register_assets']);
 add_theme_support('post-thumbnails');
 
 add_image_size('blog-list-thumbnail size', 400, 0);
+add_image_size('blog-post-entry size', 475, 0);
