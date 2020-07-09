@@ -1,24 +1,26 @@
 # X-Child theme for sp website
 
-
-## Getting started 
+## Getting started
 
 Copy child theme into default wordpress themes folder (`wp-content/themes`)
 
 <br>
 
 Install dependencies
-  ```
-    yarn install 
-``` 
+
+```
+  yarn install
+```
+
 <br>
 Build
 
 ```
-    yarn build 
+    yarn build
     # or
-    yarn watch 
-``` 
+    yarn watch
+```
+
 <br>
 Build for prod
 
@@ -26,12 +28,11 @@ Build for prod
     yarn dist
 ```
 
-
 ## How To
 
 ### Include images/icons in scss
 
-Webpack is configured to automatically "build" any image that is imported in js or included in scss. 
+Webpack is configured to automatically "build" any image that is imported in js or included in scss.
 For example:
 
 ```
@@ -40,15 +41,14 @@ For example:
 
 Automatically copies the image to the build folder, so that it can be used.
 
-
 ## Features
 
-- Babel transpiler 
-- PostCSS autoprefixer 
-- UglifyJS 
-
+- Babel transpiler
+- PostCSS autoprefixer
+- UglifyJS
 
 ## Possible improvements
 
 - add HMR
 - use `terser`
+- add tests
