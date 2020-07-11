@@ -1,6 +1,11 @@
 /* _footer.scss */
 
 //footer
-/*.x-colophon.bottom {
-  background-color: $color_blue_highlight !important;
-}*/
+footer.x-colophon.top {
+  padding: 2% 0;
+}
+
+// proven expert stars
+footer#pe_stars {
+  height: 18px;
+}
