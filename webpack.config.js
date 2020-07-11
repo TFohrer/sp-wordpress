@@ -8,6 +8,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
+const Dotenv = require("dotenv-webpack");
+
+require("dotenv").config();
 
 module.exports = {
   entry: ["./assets/js/main.js", "./assets/sass/main.scss"],
@@ -35,7 +38,12 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           "css-loader",
           "postcss-loader",
-          "sass-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              prependData: `$baseUrl: '${process.env.BASE_URL}';`,
+            },
+          },
         ],
       },
       {
@@ -50,6 +58,7 @@ module.exports = {
         loader: "file-loader",
         options: {
           name: "[path][name].[ext]",
+          outputPath: "fonts",
         },
       },
     ],
