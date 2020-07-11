@@ -1,10 +1,10 @@
 $baseFontUrl: $baseUrl + "/wp-content/themes/x-child/assets/fonts/";
 
-@mixin fontUrl($fontLocalName, $fontFileName) {
+@mixin fontUrl($fontLocalName, $fontFileName, $subFolder: "") {
   src: local($fontLocalName),
-    url($baseFontUrl + $fontFileName + ".woff2") format("woff2"),
-    url($baseFontUrl + $fontFileName + ".woff") format("woff"),
-    url($baseFontUrl + $fontFileName + ".ttf") format("truetype");
+    url($baseFontUrl + $subFolder + $fontFileName + ".woff2") format("woff2"),
+    url($baseFontUrl + $subFolder + $fontFileName + ".woff") format("woff"),
+    url($baseFontUrl + $subFolder + $fontFileName + ".ttf") format("truetype");
 }
 
 /* lato-100 - latin-ext_latin */
@@ -37,4 +37,27 @@ $baseFontUrl: $baseUrl + "/wp-content/themes/x-child/assets/fonts/";
   font-style: italic;
   font-weight: 700;
   @include fontUrl("Lato Bold Italic", "lato-v16-latin-ext_latin-700italic");
+}
+
+// Poppins
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  @include fontUrl("Poppins Regular", "poppins-v9-latin-regular", "poppins/");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  @include fontUrl("Poppins Medium", "poppins-v9-latin-500", "poppins/");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  @include fontUrl("Poppins SemiBold", "poppins-v9-latin-600", "poppins/");
 }
