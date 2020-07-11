@@ -44,7 +44,7 @@ jobs:
 
     - name: Deploy/Sync 🚀
       env:
-        dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:/www/htdocs/w0145bd5/alpha-you.com/prod/pfluegler/wp-content/themes/x-child'
+        dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:${{secrets.DEPLOY_DESTINATION}}'
       run: |
         echo "${{secrets.DEPLOY_KEY}}" > deploy_key
         chmod 600 ./deploy_key
