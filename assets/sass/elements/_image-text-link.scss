@@ -41,11 +41,7 @@ styling for the custom cornerstone element 'Image Text Link' (cornerstone/elemen
   color: white;
   transition: background-color 0.5s;
   padding: 20px 20px 30px;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.7)
-  );
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
 
   @include breakpoint-up(md) {
     padding: 45px 30px 30px;

@@ -1,27 +1,28 @@
 /* import helper */
-@import "helpers/variables";
-@import "helpers/mixins";
-@import "helpers/media-queries";
-@import "helpers/utility";
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/media-queries';
+@import 'helpers/utility';
 
-@import "base/font";
+@import 'base/font';
+@import 'base/typo';
 
 /* import page part stylings */
-@import "parts/header";
-@import "parts/review-slider";
-@import "parts/footer";
-@import "parts/container";
-@import "parts/typo";
-@import "parts/hero";
-@import "parts/blog";
-@import "parts/blog-post";
+@import 'parts/header';
+@import 'parts/review-slider';
+@import 'parts/footer';
+@import 'parts/container';
+@import 'parts/hero';
+@import 'parts/blog';
+@import 'parts/blog-post';
 /* import components */
 
-@import "components/buttons";
-@import "components/same-height";
-@import "components/arrows";
+@import 'components/buttons';
+@import 'components/same-height';
+@import 'components/arrows';
 
 /* import elements */
 
-@import "elements/logo-showcase-slider";
-@import "elements/image-text-link";
+@import 'elements/logo-showcase-slider';
+@import 'elements/image-text-link';
+@import 'elements/newsletter-signup';

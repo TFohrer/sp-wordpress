@@ -1,0 +1,110 @@
+.newsletter-signup {
+  margin: 25px 0;
+}
+
+.newsletter-signup__container {
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint-up(md) {
+    flex-direction: row;
+    align-content: center;
+  }
+}
+
+.newsletter-signup__column {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+
+  @include breakpoint-up(md) {
+    width: 50%;
+    padding: 0 35px;
+  }
+}
+
+.newsletter-signup__column--fields {
+  flex-flow: row wrap;
+
+  @include breakpoint-down(md) {
+    margin-top: 25px;
+  }
+}
+
+.newsletter-signup__field-container {
+  position: relative;
+  width: 100%;
+  height: 42px;
+  margin-bottom: 10px;
+
+  @include breakpoint-up(sm) {
+    width: 50%;
+
+    &:nth-child(2n + 1) {
+      padding-right: 10px;
+    }
+  }
+
+  input {
+    height: 100%;
+  }
+}
+
+.newsletter-signup__input {
+  background: none;
+  border-radius: 2px;
+
+  &.wpcf7-not-valid {
+    border-color: $color-highlight;
+  }
+}
+
+.newsletter-signup .ajax-loader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  text-align: center;
+
+  &:before {
+    left: calc(50% - (1em / 2));
+    top: calc(50% - (1em / 2));
+  }
+}
+
+// hide not valid text
+.wpcf7-not-valid-tip {
+  display: none;
+}
+
+.newsletter-signup__field-container input[type='submit'] {
+  width: 100%;
+}
+
+.newsletter-signup__headline {
+  font-size: 1.5em;
+
+  @include breakpoint-up(md) {
+    font-size: 1.9em;
+  }
+}
+
+.newsletter-signup__text {
+  font-size: 0.85em;
+}
+
+.wpcf7-response-output[aria-hidden='true'] {
+  display: none;
+}
+
+.newsletter-signup__foot-note {
+  font-size: 0.7em;
+  color: silver;
+  width: 100%;
+}
