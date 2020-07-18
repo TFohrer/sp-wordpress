@@ -1,63 +1,69 @@
-$baseFontUrl: $baseUrl + "/wp-content/themes/x-child/assets/fonts/";
+$baseFontUrl: $baseUrl + '/wp-content/themes/x-child/assets/fonts/';
 
-@mixin fontUrl($fontLocalName, $fontFileName, $subFolder: "") {
-  src: local($fontLocalName),
-    url($baseFontUrl + $subFolder + $fontFileName + ".woff2") format("woff2"),
-    url($baseFontUrl + $subFolder + $fontFileName + ".woff") format("woff"),
-    url($baseFontUrl + $subFolder + $fontFileName + ".ttf") format("truetype");
+@mixin fontUrl($fontLocalName, $fontFileName, $subFolder: '') {
+  src: local($fontLocalName), url($baseFontUrl + $subFolder + $fontFileName + '.woff2') format('woff2'),
+    url($baseFontUrl + $subFolder + $fontFileName + '.woff') format('woff'),
+    url($baseFontUrl + $subFolder + $fontFileName + '.ttf') format('truetype');
 }
 
 /* lato-100 - latin-ext_latin */
 @font-face {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 100;
-  @include fontUrl("Lato Hairline", "lato-v16-latin-ext_latin-100");
+  font-display: swap;
+  @include fontUrl('Lato Hairline', 'lato-v16-latin-ext_latin-100');
 }
 
 /* lato-regular - latin-ext_latin */
 @font-face {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  @include fontUrl("Lato Regular", "lato-v16-latin-ext_latin-regular");
+  font-display: swap;
+  @include fontUrl('Lato Regular', 'lato-v16-latin-ext_latin-regular');
 }
 
 /* lato-700 - latin-ext_latin */
 @font-face {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  @include fontUrl("Lato Bold", "lato-v16-latin-ext_latin-700");
+  font-display: swap;
+  @include fontUrl('Lato Bold', 'lato-v16-latin-ext_latin-700');
 }
 
 /* lato-700italic - latin-ext_latin */
 @font-face {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: italic;
   font-weight: 700;
-  @include fontUrl("Lato Bold Italic", "lato-v16-latin-ext_latin-700italic");
+  font-display: swap;
+  @include fontUrl('Lato Bold Italic', 'lato-v16-latin-ext_latin-700italic');
 }
 
 // Poppins
 
 @font-face {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  @include fontUrl("Poppins Regular", "poppins-v9-latin-regular", "poppins/");
+  font-display: swap;
+  @include fontUrl('Poppins Regular', 'poppins-v9-latin-regular', 'poppins/');
 }
 
 @font-face {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  @include fontUrl("Poppins Medium", "poppins-v9-latin-500", "poppins/");
+  font-display: swap;
+  @include fontUrl('Poppins Medium', 'poppins-v9-latin-500', 'poppins/');
 }
 
 @font-face {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
-  @include fontUrl("Poppins SemiBold", "poppins-v9-latin-600", "poppins/");
+  font-display: swap;
+  @include fontUrl('Poppins SemiBold', 'poppins-v9-latin-600', 'poppins/');
 }
