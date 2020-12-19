@@ -108,3 +108,24 @@
   color: silver;
   width: 100%;
 }
+
+// move to seperate form file 
+.form__checkbox {
+  display: block;
+  margin: 20px 0;
+}
+
+.form__checkbox .wpcf7-list-item{
+  display: flex;
+  margin: 0;
+}
+
+.form__checkbox input {
+  margin-right: 10px;
+}
+
+.form__checkbox .wpcf7-list-item-label {
+  font-size: 0.6em;
+  line-height: 1.2;
+  color: white;
+}
