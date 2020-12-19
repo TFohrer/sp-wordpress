@@ -129,3 +129,18 @@
   line-height: 1.2;
   color: white;
 }
+
+// acceptance checkbox 
+.form__field-container--checkbox {
+  label {
+      display: flex;
+      margin: 20px 0;
+      font-size: 0.6em;
+      line-height: 1.2;
+      color: white;
+  }
+  
+  input {
+      margin-right: 10px;
+  }
+}
