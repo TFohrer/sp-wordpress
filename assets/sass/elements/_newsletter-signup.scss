@@ -132,6 +132,10 @@
 
 // acceptance checkbox 
 .form__field-container--checkbox {
+  .wpcf7-list-item {
+    margin: 0;
+  }
+  
   label {
       display: flex;
       margin: 20px 0;
