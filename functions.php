@@ -201,3 +201,21 @@ add_filter('cs_load_google_fonts', '__return_false');
 
 // disable contact form 7 autop function
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+
+// Add custom widget area
+// =============================================================================
+function register_custom_widget_area() {
+register_sidebar(
+array(
+'id' => 'main-content-widget-area',
+'name' => esc_html__( 'Main content widget area', 'x-child' ),
+'description' => esc_html__( 'A new widget area made for main content to add events widget', 'x-child' ),
+'before_widget' => '<div id="%1$s" class="widget %2$s">',
+'after_widget' => '</div>',
+'before_title' => '<div class="widget-title-holder"><h3 class="widget-title">',
+'after_title' => '</h3></div>'
+)
+);
+}
+add_action( 'widgets_init', 'register_custom_widget_area' );
