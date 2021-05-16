@@ -152,3 +152,12 @@
       margin-right: 10px;
   }
 }
+
+.wpcf7-form {
+  &.sent,
+  &.invalid {
+    .wpcf7-response-output {
+      display: block im !important;
+    }
+  }
+}
