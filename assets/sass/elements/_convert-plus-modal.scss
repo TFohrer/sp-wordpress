@@ -1,0 +1,31 @@
+// styles used to override the default ConvertPlus modal styles
+.cp-custom-modal {
+    .cp-row {
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
+
+        @include breakpoint-up(md) {
+            flex-direction: row;
+          }
+    }
+    .cp-text-container {
+        order: 2;
+    }
+
+    .cp-column-equalized-center.cp-center {
+        transition: none !important;
+        top: 0;
+        transform: none;
+    }
+
+    .custom-html-form form {
+        padding: 0;
+    }
+
+    .cp-overlay-close img {
+        padding: 5px;
+        background: #292929;
+        border-radius: 50%;
+    }
+}
