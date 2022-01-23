@@ -10,6 +10,12 @@ $smls_settings['logo_layout'] =
 $random_num = rand(111111111, 999999999);
 ?>
 
+  <?php
+  if ( isset( $smls_settings[ 'logo_layout' ] ) && $smls_settings[ 'logo_layout' ] == 'grid' ) {
+      return "<p>Grid</p>"
+  }
+    ?>
+
 <div class="logo-showcase-slider logo-showcase-slider--<?php echo $random_num; ?>">
     <div class="logo-showcase-slider__container">
         <?php foreach (
