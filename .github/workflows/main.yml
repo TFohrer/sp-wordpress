@@ -6,7 +6,7 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -14,44 +14,46 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      CI: true
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
 
-    - uses: actions/cache@v1
-      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
+      - uses: actions/cache@v1
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-    - name: Install dependencies
-      run: yarn install
-   
-    - name: Create .env file 
-      uses: SpicyPizza/create-envfile@v1
-      with:
-        envkey_BASE_URL: ${{secrets.BASE_URL}}
-        file_name: .env
-    
-    - name: Build 🔧
-      run: yarn dist
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
-    - name: Deploy/Sync 🚀
-      env:
-        dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:${{secrets.DEPLOY_DESTINATION}}'
-      run: |
-        echo "${{secrets.DEPLOY_KEY}}" > deploy_key
-        chmod 600 ./deploy_key
-        rsync -chav --delete \
-          -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
-          --exclude /.git/ \
-          --exclude /.github/ \
-          --exclude /node_modules/ \
-          ./ ${{env.dest}}
+      # - name: Create .env file
+      #   uses: SpicyPizza/create-envfile@v1
+      #   with:
+      #     envkey_BASE_URL: ${{secrets.BASE_URL}}
+      #     file_name: .env
 
+      - name: Build 🔧
+        run: yarn build
+        env:
+          BASE_URL: ${{secrets.BASE_URL}}
+      # - name: Deploy/Sync 🚀
+      #   env:
+      #     dest: '${{secrets.SSH_USER}}@${{secrets.SSH_SERVER}}:${{secrets.DEPLOY_DESTINATION}}'
+      #   run: |
+      #     echo "${{secrets.DEPLOY_KEY}}" > deploy_key
+      #     chmod 600 ./deploy_key
+      #     rsync -chav --delete \
+      #       -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
+      #       --exclude /.git/ \
+      #       --exclude /.github/ \
+      #       --exclude /node_modules/ \
+      #       ./ ${{env.dest}}
