@@ -1,0 +1,14 @@
+<li class="link-list-item {{ classes|join }}">
+  <a class="link-list-item__link" href="{{ link_href }}" {% if link_new_tab %}target="_blank"{%endif%} {% if link_no_follow %}ref="nofollow"{% endif %}>
+    {% if image %}
+      {% set imagePost = get_image(image.id) %}
+      <img class="link-list-item__image"
+        src="{{ imagePost.src }}"
+        alt="{{ imagePost.alt }}" />
+    {% endif %}
+
+    <p class="link-list-item__body">
+      {{- body|e('wp_kses_post') -}}
+    </p>
+  </a>
+</li>

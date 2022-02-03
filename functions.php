@@ -18,6 +18,38 @@
 // Enqueue Parent Stylesheet
 // =============================================================================
 
+// Load Composer dependencies.
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Timber/Twig
+// =============================================================================
+new Timber\Timber();
+add_filter('timber/twig', 'add_to_twig');
+add_filter('timber/locations', function ($paths) {
+  $paths['cornerstone'] = [ABSPATH . '/wp-content/themes/x-child/cornerstone/elements'];
+
+  return $paths;
+});
+
+/**
+ * Adds functionality to Twig.
+ *
+ * @param \Twig\Environment $twig The Twig environment.
+ * @return \Twig\Environment
+ */
+function add_to_twig($twig)
+{
+  $twig->addFilter(
+    new Twig\TwigFilter('parse_str', function ($str) {
+      $data = [];
+      parse_str($str, $data);
+      return $data;
+    })
+  );
+
+  return $twig;
+}
+
 add_filter('x_enqueue_parent_stylesheet', '__return_true');
 
 // Additional Functions
@@ -105,6 +137,8 @@ add_action('after_setup_theme', 'load_child_language');
 function register_custom_cornerstone_elements()
 {
   require_once 'cornerstone/elements/image-text-link.php';
+  require_once 'cornerstone/elements/link-list/link-list-item.php';
+  require_once 'cornerstone/elements/link-list/link-list.php';
 }
 
 add_action('cs_register_elements', 'register_custom_cornerstone_elements');
@@ -202,20 +236,18 @@ add_filter('cs_load_google_fonts', '__return_false');
 // disable contact form 7 autop function
 add_filter('wpcf7_autop_or_not', '__return_false');
 
-
 // Add custom widget area
 // =============================================================================
-function register_custom_widget_area() {
-register_sidebar(
-array(
-'id' => 'main-content-widget-area',
-'name' => esc_html__( 'Main content widget area', 'x-child' ),
-'description' => esc_html__( 'A new widget area made for main content to add events widget', 'x-child' ),
-'before_widget' => '<div id="%1$s" class="widget %2$s">',
-'after_widget' => '</div>',
-'before_title' => '<div class="widget-title-holder"><h3 class="widget-title">',
-'after_title' => '</h3></div>'
-)
-);
+function register_custom_widget_area()
+{
+  register_sidebar([
+    'id' => 'main-content-widget-area',
+    'name' => esc_html__('Main content widget area', 'x-child'),
+    'description' => esc_html__('A new widget area made for main content to add events widget', 'x-child'),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<div class="widget-title-holder"><h3 class="widget-title">',
+    'after_title' => '</h3></div>',
+  ]);
 }
-add_action( 'widgets_init', 'register_custom_widget_area' );
+add_action('widgets_init', 'register_custom_widget_area');

@@ -1,0 +1,9 @@
+{
+  "name": "tfohrer/x-child",
+  "require": {
+    "timber/timber": "2.0.0-alpha.4"
+  },
+  "require-dev": {
+    "hellonico/timber-dump-extension": "^1.0"
+  }
+}

@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
@@ -32,8 +30,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install dependencies
+      - name: Install yarn dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Install composer dependencies
+        uses: php-actions/composer@v6
+        with:
+          dev: no
+          php_version: '7.4'
+          args: --profile --ignore-platform-reqs
 
       # - name: Create .env file
       #   uses: SpicyPizza/create-envfile@v1

@@ -1,0 +1,9 @@
+<section class="logo-grid flex">
+  {% for entry in entries %}
+    {% set entry = entry|parse_str|first %}
+    <div class="logo-grid__entry">
+      {# {{ dump(entry) }} #}
+      <img src="{{ entry.logo_image_url }}" />
+    </div>
+  {% endfor %}
+</section>

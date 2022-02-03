@@ -9,19 +9,16 @@ cs_register_element('image-text-link', [
     'link' => cs_value('', 'style', false),
   ],
   'builder' => 'image_text_link_builder_setup',
-  // Connect a function used to render this element
   'render' => 'image_text_link_render',
 ]);
 
 function image_text_link_builder_setup()
 {
   return cs_compose_controls([
-    // Define the control groups that will appear in the inspector navigation bar
     'control_nav' => [
       'image-text-link' => __('Image Text Link', 'your-text-domain'),
       'image-text-link:setup' => __('Setup', 'your-text-domain'),
     ],
-    // Define the controls that connect to our values.
     'controls_std_content' => [
       [
         'key' => 'headline',
@@ -73,7 +70,6 @@ function image_text_link_render($data)
             <p class="image-text-link__text"><?php echo $content; ?></p>
             <p class="image-text-link__read-more">
                 Mehr erfahren
-                <!--<span class="arrow arrow--right"><span class="arrow__shaft"></span></span>-->
             </p>
         </div>
     </a>
