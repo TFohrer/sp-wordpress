@@ -1,5 +1,5 @@
 <li class="link-list-item {{ classes|join }}">
-  <a class="link-list-item__link" href="{{ link_href }}" {% if link_new_tab %}target="_blank"{%endif%} {% if link_no_follow %}ref="nofollow"{% endif %}>
+  <a class="link-list-item__link" href="{{ link_href }}" {% if link_blank %}target="_blank"{%endif%} {% if link_nofollow %}ref="nofollow"{% endif %}>
     {% if image %}
       {% set imagePost = get_image(image.id) %}
       <img class="link-list-item__image"
