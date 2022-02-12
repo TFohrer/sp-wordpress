@@ -3,8 +3,14 @@
 use Timber\Timber;
 
 $values = cs_compose_values([
-  'body' => cs_value(''),
-  'image' => cs_value(null, 'markup'),
+  'body' => cs_value('Link List Body Text'),
+  'image',
+  'image:src',
+  'image:retina',
+  'image:dimensions',
+  'image:link',
+  'image:alt',
+  'image:object',
   'link_href' => cs_value('', 'markup', true),
   'link_blank' => cs_value(false, 'markup', true),
   'link_nofollow' => cs_value(false, 'markup', true),
@@ -22,9 +28,6 @@ cs_register_element('link-list-item', [
     'inline' => [
       'body' => [
         'selector' => '.link-list__item-body',
-      ],
-      'image' => [
-        'selector' => '.link-list__item-image',
       ],
     ],
   ],
