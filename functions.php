@@ -58,34 +58,10 @@ add_filter('x_enqueue_parent_stylesheet', '__return_true');
 $manifestStr = file_get_contents(dirname(__FILE__) . '/build/manifest.json');
 $manifest = json_decode($manifestStr, true);
 
-/** add post-type "Seminar Bewertungen" **/
-add_action('init', 'create_post_type');
-function create_post_type()
-{
-  register_post_type('seminar_rating', [
-    'labels' => [
-      'name' => __('Seminar Bewertungen'),
-      'singular_name' => __('Seminar Bewertung'),
-    ],
-    'public' => true,
-    'has_archive' => false,
-    'supports' => ['title', 'editor', 'comments', 'thumbnail'],
-  ]);
-}
-
-function add_event_post_type($types)
-{
-  $types['seminar_rating'] = 'seminar_rating';
-  return $types;
-}
-add_filter('cs_recent_posts_post_types', 'add_event_post_type', 999);
-
 /** wp user frontend hook **/
 add_action('custom_review_render_hook', 'custom_review_form_render', 10, 3);
 function custom_review_form_render($form_id, $post_id, $form_settings)
 {
-  // do what ever you want
-
   $form_vars = get_post_meta($form_id, 'wpuf_form', true);
   $form_settings = get_post_meta($form_id, 'wpuf_form_settings', true);
 }
