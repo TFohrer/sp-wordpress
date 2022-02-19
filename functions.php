@@ -115,6 +115,8 @@ function register_custom_cornerstone_elements()
   require_once 'cornerstone/elements/image-text-link.php';
   require_once 'cornerstone/elements/link-list/link-list-item.php';
   require_once 'cornerstone/elements/link-list/link-list.php';
+  require_once 'cornerstone/elements/logo-slider/logo-slider-item.php';
+  require_once 'cornerstone/elements/logo-slider/logo-slider.php';
 }
 
 add_action('cs_register_elements', 'register_custom_cornerstone_elements');
