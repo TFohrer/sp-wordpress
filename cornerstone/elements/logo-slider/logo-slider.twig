@@ -1,4 +1,3 @@
-{{ dump() }}
 <div class="logo-showcase-slider logo-showcase-slider--{{
   random()
   }} {{ classes|join }}">
@@ -12,7 +11,6 @@
             type="image/jpeg" />
           <img src="{{ item.image.src|tojpg }}" alt="{{ item.image.alt }}" />
         </picture>
-        {# <img src="{{ item.image.src|tojpg }}" alt="{{ item.image.alt }}" /> #}
       </div>
     {% endfor %}
   </div>

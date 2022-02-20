@@ -2,9 +2,14 @@
   <a class="link-list-item__link" href="{{ link_href }}" {% if link_blank %}target="_blank"{%endif%} {% if link_nofollow %}ref="nofollow"{% endif %}>
     {% if image %}
       {% set imagePost = get_image(image.id) %}
-      <img class="link-list-item__image"
-        src="{{ imagePost.src }}"
-        alt="{{ imagePost.alt }}" />
+      {% set croppedImage = imagePost.src | letterbox(220, 125, "#FFFFFF") %}
+      <picture>
+          <source srcset="{{ croppedImage|towebp }}"
+            type="image/webp" />
+          <source srcset="{{ croppedImage|tojpg }}"
+            type="image/jpeg" />
+          <img class="link-list-item__image" src="{{ croppedImage }}" alt="{{ imagePost.alt }}" />
+        </picture>
     {% endif %}
 
     <p class="link-list-item__body">
