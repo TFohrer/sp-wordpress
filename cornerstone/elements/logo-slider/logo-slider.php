@@ -6,9 +6,6 @@ $values = cs_compose_values();
 cs_register_element('sp-logo-slider', [
   'title' => 'SP - Logo Slider',
   'values' => $values,
-  'icon' => 'native',
-  'icon' =>
-    '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg"><g><text transform="matrix(1 0 0 1 0 0)" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="Roboto Slab" font-size="24" id="svg_2" y="34.31601" x="10.33392" stroke-width="0" stroke="#000" fill="#000000">SP</text></g></svg>',
   'builder' => 'logo_slider_builder_setup',
   'render' => 'logo_slider_render',
   'options' => [
