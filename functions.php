@@ -207,6 +207,14 @@ add_theme_support('post-thumbnails');
 add_image_size('blog-list-thumbnail size', 400, 0);
 add_image_size('blog-post-entry size', 475, 0);
 
+// Changing excerpt more
+function new_excerpt_more($more)
+{
+  remove_filter('excerpt_more', 'new_excerpt_more');
+  return '';
+}
+add_filter('excerpt_more', 'new_excerpt_more', 11);
+
 // Remove Google Fonts
 // =============================================================================
 add_filter('cs_load_google_fonts', '__return_false');

@@ -16,12 +16,10 @@ get_template_part('template-parts/header/header', 'sp');
     <div class="blog-list" role="main">
     <?php while (have_posts()):
 
-        the_post();
-        $isFirstPost = $wp_query->current_post == 0 && !is_paged();
-        $permalink = get_the_permalink();
-
-        //if( $wp_query->current_post == 0 && !is_paged() ) :
-        ?>
+      the_post();
+      $isFirstPost = $wp_query->current_post == 0 && !is_paged();
+      $permalink = get_the_permalink();
+      ?>
                 <article class="blog-list-item">
                     <div class="blog-list-item__image-container">
                         <?php
@@ -29,7 +27,7 @@ get_template_part('template-parts/header/header', 'sp');
                             <a href="<?php echo $permalink; ?>">
                         <?php endif;
                         the_post_thumbnail('blog-list-thumbnail size', [
-                            'class' => 'blog-list-item__image',
+                          'class' => 'blog-list-item__image',
                         ]);
                         if (!$isFirstPost): ?>
                             </a>
