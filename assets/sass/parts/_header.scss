@@ -43,7 +43,7 @@
   span::after {
     display: block !important;
     position: absolute;
-    content: "";
+    content: '';
     bottom: -2px;
     left: 0;
     right: 0;
@@ -58,7 +58,8 @@
 
 .masthead .x-nav-wrap.desktop .menu-item a:hover span::after,
 .masthead .x-nav-wrap.desktop .current_page_item span::after,
-.masthead .x-nav-wrap.desktop .current_page_parent span::after {
+.masthead .x-nav-wrap.desktop .current_page_parent span::after,
+.masthead .x-nav-wrap.desktop .current-page-ancestor span::after {
   width: 100% !important;
 }
 
@@ -114,12 +115,7 @@
 
 .home .masthead .x-navbar {
   @include breakpoint-up(md) {
-    background: rgba(
-      255,
-      255,
-      255,
-      0
-    ) !important; // important needed to overwrite the theme settings
+    background: rgba(255, 255, 255, 0) !important; // important needed to overwrite the theme settings
     transition: background-color $timing-top-navigation;
     opacity: 0.99;
   }
@@ -220,6 +216,6 @@
   color: black !important;
 
   &:not(.collapsed) .x-icon-bars:before {
-    content: "\f00d";
+    content: '\f00d';
   }
 }

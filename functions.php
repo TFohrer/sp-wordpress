@@ -169,13 +169,6 @@ function remove_plugins_assets()
 }
 add_action('wp_enqueue_scripts', 'remove_plugins_assets', 100);
 
-function remove_plugins_actions()
-{
-  remove_action('wp_enqueue_scripts', 'smls_register_assets', 0);
-}
-
-add_action('wp', 'remove_plugins_actions');
-
 // remove wordpress emoji
 function remove_emoji()
 {
@@ -196,10 +189,6 @@ function remove_tinymce_emoji($plugins)
   }
   return array_diff($plugins, ['wpemoji']);
 }
-
-// remove smart logo showcase scripts
-global $smls_obj;
-remove_action('wp_enqueue_scripts', [$smls_obj, 'smls_register_assets']);
 
 // custom image sizes
 add_theme_support('post-thumbnails');
