@@ -19,7 +19,7 @@ function image_text_link_builder_setup()
       'image-text-link' => __('Image Text Link', 'your-text-domain'),
       'image-text-link:setup' => __('Setup', 'your-text-domain'),
     ],
-    'controls_std_content' => [
+    'controls' => [
       [
         'key' => 'headline',
         'type' => 'text',
